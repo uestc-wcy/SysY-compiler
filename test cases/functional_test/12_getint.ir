@@ -1,0 +1,9 @@
+function main():
+
+
+
+%a2 = alloca(%a2) #4
+%2 = call getint()
+
+return %2
+

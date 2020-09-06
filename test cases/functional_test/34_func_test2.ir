@@ -1,0 +1,58 @@
+function func1():
+
+
+
+%a2 = alloca(%a2) #4
+%2 = #1
+
+return %2
+
+function func2():
+
+
+
+%a4 = alloca(%a4) #4
+%5 = #2
+
+return %5
+
+function func3():
+
+
+
+%a6 = alloca(%a6) #4
+%8 = #4
+
+return %8
+
+function func4():
+
+
+
+%a8 = alloca(%a8) #4
+%b9 = alloca(%b9) #4
+%b10 = alloca(%b10) #4
+%11 = #24
+
+return %11
+
+function main():
+
+
+
+%a12 = alloca(%a12) #4
+%b12 = alloca(%b12) #4
+%c12 = alloca(%c12) #4
+%20 = call func1()
+%21 = call func2()
+%22 = %20 + %21
+%23 = call func3()
+%24 = %22 + %23
+%25 = call func4()
+%26 = %24 + %25
+%27 = %26 + #32
+%28 = %27 + #32
+%16 = %28 + #32
+
+return %16
+

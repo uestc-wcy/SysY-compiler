@@ -1,0 +1,69 @@
+function maxSubArray(%nums1[],%n1):
+
+
+
+if %n1 != #0 goto .L2
+
+%2 = #0
+goto .L1
+
+label .L2
+if %n1 != #1 goto .L3
+
+%2 = %nums1[#0]
+goto .L1
+
+label .L3
+%sum4 = alloca(%sum4) #4
+%sum4 = %nums1[#0]
+%max4 = alloca(%max4) #4
+%max4 = %sum4
+%i4 = alloca(%i4) #4
+%i4 = #1
+
+label .L4
+if %i4 >= %n1 goto .L7
+
+if %sum4 >= #0 goto .L6
+
+%sum4 = #0
+
+label .L6
+%17 = %nums1[%i4]
+%sum4 = %sum4 + %17
+if %max4 >= %sum4 goto .L5
+
+%max4 = %sum4
+
+label .L5
+%i4 = %i4 + #1
+goto .L4
+
+label .L7
+%2 = %max4
+
+label .L1
+return %2
+
+function main():
+%a9 = alloca #40
+
+
+
+%res9 = alloca(%res9) #4
+%25 = & %a9
+call memset(%25,#0,#40)
+%a9[#0] = #-4
+%a9[#1] = #3
+%a9[#2] = #9
+%a9[#3] = #-2
+%a9[#4] = #0
+%a9[#5] = #1
+%a9[#6] = #-6
+%a9[#7] = #5
+%a9[#8] = #7
+%a9[#9] = #8
+%24 = call maxSubArray(%25,#10)
+
+return %24
+

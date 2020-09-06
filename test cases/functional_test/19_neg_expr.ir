@@ -1,0 +1,16 @@
+int_non_init @a
+int_non_init @b
+function main():
+
+
+
+@a = call getint()
+@b = call getint()
+%c2 = alloca(%c2) #4
+%5 = @a + @b
+%6 = - %5
+call putint(%6)
+%2 = #0
+
+return %2
+

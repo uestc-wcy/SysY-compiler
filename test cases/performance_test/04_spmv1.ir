@@ -1,0 +1,116 @@
+const_int_init @N = 100010
+const_int_init @M = 3000000
+array_non_init @x = [100010]
+array_non_init @y = [3000000]
+array_non_init @v = [3000000]
+array_non_init @a = [100010]
+array_non_init @b = [100010]
+array_non_init @c = [100010]
+function spmv(%n1,%xptr1[],%yidx1[],%vals1[],%b1[],%x1[]):
+
+
+
+%i2 = alloca(%i2) #4
+%j2 = alloca(%j2) #4
+%k2 = alloca(%k2) #4
+%i2 = #0
+
+label .L1
+if %i2 >= %n1 goto .L2
+
+%x1[%i2] = #0
+%i2 = %i2 + #1
+goto .L1
+
+label .L2
+%i2 = #0
+
+label .L7
+if %i2 >= %n1 goto .L8
+
+%j2 = %xptr1[%i2]
+
+label .L3
+%14 = %i2 + #1
+%12 = %xptr1[%14]
+if %j2 >= %12 goto .L4
+
+%17 = %yidx1[%j2]
+%22 = %x1[%17]
+%28 = %vals1[%j2]
+%31 = %22 + %28
+%x1[%17] = %31
+%j2 = %j2 + #1
+goto .L3
+
+label .L4
+%j2 = %xptr1[%i2]
+
+label .L5
+%39 = %i2 + #1
+%37 = %xptr1[%39]
+if %j2 >= %37 goto .L6
+
+%42 = %yidx1[%j2]
+%47 = %x1[%42]
+%53 = %vals1[%j2]
+%56 = %b1[%i2]
+%60 = %56 - #1
+%61 = %53 * %60
+%62 = %47 + %61
+%x1[%42] = %62
+%j2 = %j2 + #1
+goto .L5
+
+label .L6
+%i2 = %39
+goto .L7
+
+label .L8
+return 
+
+function main():
+
+
+
+%n8 = alloca(%n8) #4
+%70 = & @x
+%72 = call getarray(%70)
+%n8 = %72 - #1
+%m8 = alloca(%m8) #4
+%76 = & @y
+%78 = call getarray(%76)
+%80 = & @v
+%82 = call getarray(%80)
+%84 = & @a
+%86 = call getarray(%84)
+call starttime()
+%i8 = alloca(%i8) #4
+%i8 = #0
+
+label .L9
+if %i8 >= #100 goto .L10
+
+%90 = & @x
+%93 = & @y
+%96 = & @v
+%99 = & @a
+%102 = & @b
+call spmv(%n8,%90,%93,%96,%99,%102)
+%105 = & @x
+%108 = & @y
+%111 = & @v
+%114 = & @b
+%117 = & @a
+call spmv(%n8,%105,%108,%111,%114,%117)
+%i8 = %i8 + #1
+goto .L9
+
+label .L10
+call stoptime()
+%122 = & @b
+call putarray(%n8,%122)
+%68 = #0
+
+return %68
+

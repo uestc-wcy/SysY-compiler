@@ -1,0 +1,40 @@
+function ifWhile():
+
+
+
+%a2 = alloca(%a2) #4
+%a2 = #0
+%b2 = alloca(%b2) #4
+%b2 = #3
+if #0 != #5 goto .L4
+
+label .L1
+if %b2 != #2 goto .L2
+
+%b2 = %b2 + #2
+goto .L1
+
+label .L2
+%b2 = %b2 + #25
+goto .L3
+
+label .L4
+if %a2 >= #5 goto .L3
+
+%b2 = %b2 * #2
+%a2 = %a2 + #1
+goto .L4
+
+label .L3
+%2 = %b2
+
+return %2
+
+function main():
+
+
+
+%17 = call ifWhile()
+
+return %17
+

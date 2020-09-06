@@ -1,0 +1,37 @@
+function fsqrt(%a1):
+
+
+
+%x02 = alloca(%x02) #4
+%x02 = #0
+%x12 = alloca(%x12) #4
+%x12 = %a1 / #2
+
+label .L1
+%6 = %x02 - %x12
+if %6 == #0 goto .L2
+
+%x02 = %x12
+%8 = %a1 / %x12
+%x12 = %x12 + %8
+%x12 = %x12 / #2
+goto .L1
+
+label .L2
+%2 = %x12
+
+return %2
+
+function main():
+
+
+
+%a5 = alloca(%a5) #4
+%res5 = alloca(%res5) #4
+%15 = call fsqrt(#400)
+call putint(%15)
+call putch(#10)
+%13 = #0
+
+return %13
+

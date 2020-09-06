@@ -1,0 +1,134 @@
+int_non_init @x
+const_int_init @N = 2010
+array_non_init @A = [4040100]
+array_non_init @B = [2010]
+array_non_init @C = [2010]
+function mv(%n1,%A1[],%b1[],%res1[]):
+
+
+
+%x2 = alloca(%x2) #4
+%y2 = alloca(%y2) #4
+%y2 = #0
+%x2 = #11
+%i2 = alloca(%i2) #4
+%j2 = alloca(%j2) #4
+%i2 = #0
+
+label .L1
+if %i2 >= %n1 goto .L2
+
+%res1[%i2] = #0
+%i2 = %i2 + #1
+goto .L1
+
+label .L2
+%i2 = #0
+
+label .L7
+if %i2 >= %n1 goto .L8
+
+%j2 = #0
+
+label .L4
+if %j2 >= %n1 goto .L6
+
+%16 = %i2 * #2010
+%17 = %16 + %j2
+%13 = %A1[%17]
+if %13 != #0 goto .L5
+
+%19 = %b1[%i2]
+%22 = %x2 * %19
+%23 = %b1[%j2]
+%x2 = %22 + %23
+%y2 = %y2 - %x2
+goto .L3
+
+label .L5
+%30 = %res1[%i2]
+%36 = %16
+%37 = %36 + %j2
+%33 = %A1[%37]
+%38 = %b1[%j2]
+%41 = %33 * %38
+%42 = %30 + %41
+%res1[%i2] = %42
+
+label .L3
+%j2 = %j2 + #1
+goto .L4
+
+label .L6
+%i2 = %i2 + #1
+goto .L7
+
+label .L8
+return 
+
+function main():
+
+
+
+%n9 = alloca(%n9) #4
+%n9 = call getint()
+%i9 = alloca(%i9) #4
+%j9 = alloca(%j9) #4
+%i9 = #0
+
+label .L11
+if %i9 >= %n9 goto .L12
+
+%j9 = #0
+
+label .L9
+if %j9 >= %n9 goto .L10
+
+%54 = %i9 * #2010
+%55 = %54 + %j9
+%56 = call getint()
+@A[%55] = %56
+%j9 = %j9 + #1
+goto .L9
+
+label .L10
+%i9 = %i9 + #1
+goto .L11
+
+label .L12
+%i9 = #0
+
+label .L13
+if %i9 >= %n9 goto .L14
+
+%64 = call getint()
+@B[%i9] = %64
+%i9 = %i9 + #1
+goto .L13
+
+label .L14
+call starttime()
+%i9 = #0
+
+label .L15
+if %i9 >= #50 goto .L16
+
+%70 = & @A
+%73 = & @B
+%76 = & @C
+call mv(%n9,%70,%73,%76)
+%79 = & @A
+%82 = & @C
+%85 = & @B
+call mv(%n9,%79,%82,%85)
+%i9 = %i9 + #1
+goto .L15
+
+label .L16
+call stoptime()
+%90 = & @C
+call putarray(%n9,%90)
+%48 = #0
+
+return %48
+

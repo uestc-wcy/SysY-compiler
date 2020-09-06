@@ -1,0 +1,30 @@
+function main():
+
+
+
+%a2 = alloca(%a2) #4
+%b2 = alloca(%b2) #4
+%c2 = alloca(%c2) #4
+%a2 = #1
+%b2 = #4
+%c2 = #28
+%t2 = alloca(%t2) #4
+if #29 == #4 goto .L2
+
+%7 = - %b2
+%8 = %c2 mod %7
+call putint(%8)
+
+label .L2
+%9 = %b2 - %c2
+if %9 != %a2 goto .L1
+
+%10 = %c2 mod %b2
+%11 = %10 + %b2
+call putint(%11)
+
+label .L1
+%2 = #0
+
+return %2
+

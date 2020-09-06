@@ -1,0 +1,133 @@
+int_non_init @N
+int_non_init @M
+int_non_init @L
+function sub(%a01[],%a11[],%a21[],%b01[],%b11[],%b21[],%c01[],%c11[],%c21[]):
+
+
+
+%i2 = alloca(%i2) #4
+%i2 = #0
+
+label .L1
+if %i2 >= #3 goto .L2
+
+%7 = %a01[%i2]
+%10 = %b01[%i2]
+%13 = %7 - %10
+%c01[%i2] = %13
+%16 = %a11[%i2]
+%19 = %b11[%i2]
+%22 = %16 - %19
+%c11[%i2] = %22
+%25 = %a21[%i2]
+%28 = %b21[%i2]
+%31 = %25 - %28
+%c21[%i2] = %31
+%i2 = %i2 + #1
+goto .L1
+
+label .L2
+%2 = #0
+
+return %2
+
+function main():
+%a05 = alloca #12
+%a15 = alloca #12
+%a25 = alloca #12
+%b05 = alloca #12
+%b15 = alloca #12
+%b25 = alloca #12
+%c05 = alloca #24
+%c15 = alloca #12
+%c25 = alloca #12
+
+
+
+@N = #3
+@M = #3
+@L = #3
+%40 = & %a05
+call memset(%40,#0,#12)
+%41 = & %a15
+call memset(%41,#0,#12)
+%42 = & %a25
+call memset(%42,#0,#12)
+%43 = & %b05
+call memset(%43,#0,#12)
+%44 = & %b15
+call memset(%44,#0,#12)
+%45 = & %b25
+call memset(%45,#0,#12)
+%46 = & %c05
+call memset(%46,#0,#24)
+%47 = & %c15
+call memset(%47,#0,#12)
+%48 = & %c25
+call memset(%48,#0,#12)
+%i5 = alloca(%i5) #4
+%i5 = #0
+
+label .L3
+if %i5 >= #3 goto .L4
+
+%a05[%i5] = %i5
+%a15[%i5] = %i5
+%a25[%i5] = %i5
+%b05[%i5] = %i5
+%b15[%i5] = %i5
+%b25[%i5] = %i5
+%i5 = %i5 + #1
+goto .L3
+
+label .L4
+%66 = & %a05
+%69 = & %a15
+%72 = & %a25
+%75 = & %b05
+%78 = & %b15
+%81 = & %b25
+%84 = & %c05
+%87 = & %c15
+%90 = & %c25
+%i5 = call sub(%66,%69,%72,%75,%78,%81,%84,%87,%90)
+%x6 = alloca(%x6) #4
+
+label .L5
+if %i5 >= #3 goto .L6
+
+%94 = %c05[%i5]
+call putint(%94)
+%i5 = %i5 + #1
+goto .L5
+
+label .L6
+%i5 = #0
+call putch(#10)
+
+label .L7
+if %i5 >= #3 goto .L8
+
+%102 = %c15[%i5]
+call putint(%102)
+%i5 = %i5 + #1
+goto .L7
+
+label .L8
+%i5 = #0
+call putch(#10)
+
+label .L9
+if %i5 >= #3 goto .L10
+
+%110 = %c25[%i5]
+call putint(%110)
+%i5 = %i5 + #1
+goto .L9
+
+label .L10
+call putch(#10)
+%36 = #0
+
+return %36
+

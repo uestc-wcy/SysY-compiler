@@ -1,0 +1,19 @@
+int_non_init @a
+function func(%p1):
+
+
+
+%2 = %p1 - #1
+
+return %2
+
+function main():
+
+
+
+%b4 = alloca(%b4) #4
+@a = #10
+%6 = call func(#10)
+
+return %6
+

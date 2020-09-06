@@ -1,0 +1,44 @@
+int_non_init @n
+function f(%x1):
+
+
+
+if %x1 != #1 goto .L2
+
+%2 = #1
+goto .L1
+
+label .L2
+if %x1 != #2 goto .L3
+
+%2 = #1
+goto .L1
+
+label .L3
+%a4 = alloca(%a4) #4
+%b4 = alloca(%b4) #4
+%8 = %x1 - #1
+%10 = %x1 - #2
+%c4 = alloca(%c4) #4
+%11 = call f(%8)
+%12 = call f(%10)
+%2 = %11 + %12
+
+label .L1
+return %2
+
+function main():
+
+
+
+@n = call getint()
+%t6 = alloca(%t6) #4
+%xx6 = alloca(%xx6) #4
+%17 = call f(@n)
+call putint(%17)
+%newline6 = alloca(%newline6) #4
+call putch(#10)
+%15 = %17
+
+return %15
+

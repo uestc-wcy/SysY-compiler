@@ -1,0 +1,91 @@
+已初始化的全局常量数组：
+const int b[5][6]={{1,2},{3,4}};
+const_array_init b = [30]{1,2,0.16,3,4,0.12,0.72}
+格式：const_array_init <参数名> = [<总长度>]{初始化列表}
+其中初始化列表遵循以下原则：依次为数组的每个元素赋值，若有连续的0，则缩写为0.x的形式，每个元素的值以','分隔。以上数组生成的arm汇编如下：
+
+	.global	b
+	.section	.rodata
+	.align	2
+	.type	b, %object
+	.size	b, 120
+b:
+	.word	1
+	.word	2
+	.space	16
+	.word	3
+	.word	4
+	.space	16
+	.space	72
+
+已初始化的全局变量数组：
+int b[5][6]={{1,2},{3,4}};
+var_array_init b = [30]{1,2,0.16,3,4,0.12,0.72}
+格式同上
+
+未初始化的全局数组：
+int b[5][6];
+const int b[5][6];
+array_non_init b = [30]
+格式：array_non_init <参数名> = [<总长度>]
+
+
+已初始化的全局常量：
+const int b=1;
+const_int_init b=1;
+
+已初始化的全局变量:
+int c=2;
+var_int_init c=2;
+
+未初始化的全局常量/变量
+const int d;int d;
+int_non_init d 
+
+由于已初始化的全局常量/变量存储在不同的段中，所以要分开考虑
+未初始化的，无论是数组还是单一的变量，都统一放在.comm段中，所以合并考虑
+
+
+label label1 : 	定义标签 label1
+function int|void f(a,b[],c...){body} 
+x = alloca n    在堆栈分配n字节内存，赋给x。（注1）
+x = y 		赋值操作，将变量 y 赋值给 x
+x = y[z]        将数组y的第z个值赋给x
+y[z] = x	将x赋给数组y的第z个位置上
+x = y [op] z 	将变量 y 和 z 进行 op 运算的结果传递给 x
+x = #10 	将立即数 10 的值传递给变量 x
+goto label1 	无条件跳转至 lable1
+if x [relop] y goto z 	如果 x 与 y 满足[relop]关系则跳转至标号 z
+x = call f(a,b[],c...) 	调用函数 f，并将其返回值赋给 x
+call f(a,b[],c...) 		调用函数 f
+return x 	退出当前函数并返回 x 值
+
+约定：
+1、临时变量以%开头，后接数字代表第几个临时变量。如：%1 %2 %3
+2、已命名变量保持原名称不变
+3、立即数以#开头，如#10代表立即数10
+4、在同一个函数内，alloca指令应当放在其他指令之前
+
+
+注1：若x代表一个int值，n应该为4；若x代表一个int数组，n应该为4*<数组长度>
+
+int f(int a,int b[],int c)
+{
+    int d[20]={};
+    int e=10;
+    d[a+e]=b[a-c*a];
+    return d[0];
+}
+
+function f(a,b[],c):
+d=alloca 80
+e=alloca 4
+e=#10
+
+%1=a*c;
+%2=a-%1
+%3=b[%2]
+%4=a+e
+d[%4]=%3
+
+return 

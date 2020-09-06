@@ -1,0 +1,85 @@
+int_non_init @n
+function select_sort(%A1[],%n1):
+
+
+
+%i2 = alloca(%i2) #4
+%j2 = alloca(%j2) #4
+%min2 = alloca(%min2) #4
+%i2 = #0
+
+label .L4
+%5 = %n1 - #1
+if %i2 >= %5 goto .L6
+
+%min2 = %i2
+%j2 = %i2 + #1
+
+label .L1
+if %j2 >= %n1 goto .L3
+
+%8 = %A1[%min2]
+%11 = %A1[%j2]
+if %8 <= %11 goto .L2
+
+%min2 = %j2
+
+label .L2
+%j2 = %j2 + #1
+goto .L1
+
+label .L3
+if %min2 == %i2 goto .L5
+
+%tmp6 = alloca(%tmp6) #4
+%16 = %A1[%min2]
+%21 = %A1[%i2]
+%A1[%min2] = %21
+%A1[%i2] = %16
+
+label .L5
+%i2 = %i2 + #1
+goto .L4
+
+label .L6
+%2 = #0
+
+return %2
+
+function main():
+%a8 = alloca #40
+
+
+
+@n = #10
+%32 = & %a8
+call memset(%32,#0,#40)
+%a8[#0] = #4
+%a8[#1] = #3
+%a8[#2] = #9
+%a8[#3] = #2
+%a8[#4] = #0
+%a8[#5] = #1
+%a8[#6] = #6
+%a8[#7] = #5
+%a8[#8] = #7
+%a8[#9] = #8
+%i8 = alloca(%i8) #4
+%i8 = #0
+%i8 = call select_sort(%32,@n)
+
+label .L7
+if %i8 >= @n goto .L8
+
+%tmp9 = alloca(%tmp9) #4
+%78 = %a8[%i8]
+call putint(%78)
+call putch(#10)
+%i8 = %i8 + #1
+goto .L7
+
+label .L8
+%30 = #0
+
+return %30
+

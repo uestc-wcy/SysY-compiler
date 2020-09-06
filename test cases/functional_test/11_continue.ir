@@ -1,0 +1,25 @@
+function main():
+
+
+
+%a2 = alloca(%a2) #4
+%a2 = #10
+
+label .L1
+if %a2 <= #0 goto .L4
+
+if %a2 <= #5 goto .L2
+
+%a2 = %a2 - #1
+goto .L1
+
+label .L2
+%2 = %a2
+goto .L3
+
+label .L4
+%2 = %a2
+
+label .L3
+return %2
+

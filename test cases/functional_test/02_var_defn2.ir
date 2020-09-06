@@ -1,0 +1,12 @@
+int_non_init @a
+int_non_init @b
+function main():
+
+
+
+@a = #10
+%c2 = alloca(%c2) #4
+%2 = #0
+
+return %2
+

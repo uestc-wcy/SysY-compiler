@@ -1,0 +1,153 @@
+int_non_init @n
+function Merge(%array1[],%low1,%middle1,%high1):
+%L2 = alloca #40
+%R2 = alloca #40
+
+
+
+%n12 = alloca(%n12) #4
+%3 = %middle1 - %low1
+%n12 = %3 + #1
+%n22 = alloca(%n22) #4
+%n22 = %high1 - %middle1
+%7 = & %L2
+call memset(%7,#0,#40)
+%8 = & %R2
+call memset(%8,#0,#40)
+%i2 = alloca(%i2) #4
+%i2 = #0
+%j2 = alloca(%j2) #4
+%j2 = #0
+
+label .L1
+if %i2 >= %n12 goto .L2
+
+%14 = %i2 + %low1
+%13 = %array1[%14]
+%L2[%i2] = %13
+%i2 = %i2 + #1
+goto .L1
+
+label .L2
+if %j2 >= %n22 goto .L3
+
+%22 = %j2 + %middle1
+%24 = %22 + #1
+%21 = %array1[%24]
+%R2[%j2] = %21
+%j2 = %j2 + #1
+goto .L2
+
+label .L3
+%i2 = #0
+%j2 = #0
+%k4 = alloca(%k4) #4
+%k4 = %low1
+
+label .L5
+if %i2 == %n12 goto .L7
+
+if %j2 == %n22 goto .L7
+
+%31 = %L2[%i2]
+%34 = %R2[%j2]
+%38 = %34 + #1
+if %31 >= %38 goto .L6
+
+%41 = %31
+%array1[%k4] = %41
+%k4 = %k4 + #1
+%i2 = %i2 + #1
+goto .L4
+
+label .L6
+%50 = %34
+%array1[%k4] = %50
+%k4 = %k4 + #1
+%j2 = %j2 + #1
+
+label .L4
+goto .L5
+
+label .L7
+if %i2 >= %n12 goto .L8
+
+%59 = %L2[%i2]
+%array1[%k4] = %59
+%k4 = %k4 + #1
+%i2 = %i2 + #1
+goto .L7
+
+label .L8
+if %j2 >= %n22 goto .L9
+
+%68 = %R2[%j2]
+%array1[%k4] = %68
+%k4 = %k4 + #1
+%j2 = %j2 + #1
+goto .L8
+
+label .L9
+%2 = #0
+
+return %2
+
+function MergeSort(%array10[],%p10,%q10):
+
+
+
+if %p10 >= %q10 goto .L10
+
+%mid12 = alloca(%mid12) #4
+%78 = %p10 + %q10
+%80 = %78 / #2
+%tmp12 = alloca(%tmp12) #4
+%82 = & %array10
+%84 = call MergeSort(%82,%p10,%80)
+%86 = %80 + #1
+%90 = call MergeSort(%82,%86,%q10)
+%94 = call Merge(%82,%p10,%80,%q10)
+
+label .L10
+%77 = #0
+
+return %77
+
+function main():
+%a14 = alloca #40
+
+
+
+@n = #10
+%99 = & %a14
+call memset(%99,#0,#40)
+%a14[#0] = #4
+%a14[#1] = #3
+%a14[#2] = #9
+%a14[#3] = #2
+%a14[#4] = #0
+%a14[#5] = #1
+%a14[#6] = #6
+%a14[#7] = #5
+%a14[#8] = #7
+%a14[#9] = #8
+%i14 = alloca(%i14) #4
+%i14 = #0
+%tmp14 = alloca(%tmp14) #4
+%142 = @n - #1
+%i14 = call MergeSort(%99,#0,%142)
+
+label .L11
+if %i14 >= @n goto .L12
+
+%147 = %a14[%i14]
+call putint(%147)
+call putch(#10)
+%i14 = %i14 + #1
+goto .L11
+
+label .L12
+%97 = #0
+
+return %97
+

@@ -1,0 +1,11 @@
+function main():
+
+
+
+%a2 = alloca(%a2) #4
+%b2 = alloca(%b2) #4
+call putint(#0)
+%2 = #0
+
+return %2
+

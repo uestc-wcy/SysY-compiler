@@ -1,0 +1,98 @@
+function atoi_(%src1[]):
+
+
+
+%s2 = alloca(%s2) #4
+%s2 = #0
+%isMinus2 = alloca(%isMinus2) #4
+%isMinus2 = #1
+%i2 = alloca(%i2) #4
+%i2 = #0
+
+label .L1
+%6 = %src1[%i2]
+if %6 != #32 goto .L2
+
+%i2 = %i2 + #1
+goto .L1
+
+label .L2
+%12 = %6
+if %12 == #43 goto .L9
+
+%16 = %12
+if %16 != #45 goto .L6
+
+label .L9
+%20 = %12
+if %20 != #45 goto .L5
+
+%isMinus2 = #-1
+
+label .L5
+%i2 = %i2 + #1
+goto .L3
+
+label .L6
+%28 = %16
+if %28 < #48 goto .L8
+
+%32 = %28
+if %32 <= #57 goto .L3
+
+label .L8
+%2 = #2147483647
+goto .L7
+
+label .L3
+%37 = %src1[%i2]
+if %37 == #0 goto .L4
+
+%41 = %37
+if %41 <= #47 goto .L4
+
+%45 = %41
+if %45 >= #58 goto .L4
+
+%50 = %s2 * #10
+%51 = %45
+%54 = %50 + %51
+%s2 = %54 - #48
+%i2 = %i2 + #1
+goto .L3
+
+label .L4
+%2 = %s2 * %isMinus2
+
+label .L7
+return %2
+
+function main():
+%string10 = alloca #2000
+
+
+
+%62 = & %string10
+call memset(%62,#0,#2000)
+%temp10 = alloca(%temp10) #4
+%temp10 = #0
+%i10 = alloca(%i10) #4
+%i10 = #0
+
+label .L10
+if %temp10 == #10 goto .L11
+
+%temp10 = call getch()
+%string10[%i10] = %temp10
+%i10 = %i10 + #1
+goto .L10
+
+label .L11
+%string10[%i10] = #0
+%75 = & %string10
+%77 = call atoi_(%75)
+call putint(%77)
+%61 = #0
+
+return %61
+

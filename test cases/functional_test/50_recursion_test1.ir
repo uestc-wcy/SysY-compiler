@@ -1,0 +1,27 @@
+function fact(%n1):
+
+
+
+if %n1 != #0 goto .L2
+
+%2 = #1
+goto .L1
+
+label .L2
+%nn3 = alloca(%nn3) #4
+%6 = %n1 - #1
+%7 = call fact(%6)
+%2 = %n1 * %7
+
+label .L1
+return %2
+
+function main():
+
+
+
+%n5 = alloca(%n5) #4
+%10 = call fact(#4)
+
+return %10
+

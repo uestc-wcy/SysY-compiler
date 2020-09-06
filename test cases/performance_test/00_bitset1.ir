@@ -1,0 +1,153 @@
+var_array_init @seed = [3]{19971231,19981013,1000000007,0.0}
+var_int_init @staticvalue = 0
+var_array_init @a = [10000]{0.40000}
+function set(%a1[],%pos1,%d1):
+%x2 = alloca #124
+
+
+
+%bitcount2 = alloca(%bitcount2) #4
+%3 = & %x2
+call memset(%3,#0,#124)
+%x2[#0] = #1
+%16 = #1 * #2
+%x2[#1] = %16
+%25 = %16 * #2
+%x2[#2] = %25
+%34 = %25 * #2
+%x2[#3] = %34
+%43 = %34 * #2
+%x2[#4] = %43
+%52 = %43 * #2
+%x2[#5] = %52
+%61 = %52 * #2
+%x2[#6] = %61
+%70 = %61 * #2
+%x2[#7] = %70
+%79 = %70 * #2
+%x2[#8] = %79
+%88 = %79 * #2
+%x2[#9] = %88
+%97 = %88 * #2
+%x2[#10] = %97
+%i2 = alloca(%i2) #4
+%i2 = #10
+
+label .L1
+if %i2 >= #30 goto .L2
+
+%100 = %i2 + #1
+%i2 = %100
+%105 = %i2 - #1
+%103 = %x2[%105]
+%109 = %103 * #2
+%x2[%100] = %109
+goto .L1
+
+label .L2
+%v3 = alloca(%v3) #4
+%v3 = #0
+%111 = %pos1 / #30
+if %111 < #10000 goto .L4
+
+%2 = %v3
+goto .L3
+
+label .L4
+%115 = %111
+%114 = %a1[%115]
+%119 = %pos1 mod #30
+%118 = %x2[%119]
+%122 = %114 / %118
+%124 = %122 mod #2
+if %124 == %d1 goto .L5
+
+%126 = %115
+%125 = %a1[%126]
+%130 = %119
+%129 = %x2[%130]
+%133 = %125 / %129
+%135 = %133 mod #2
+if %135 != #0 goto .L6
+
+if %d1 != #1 goto .L6
+
+%139 = %pos1 mod #30
+%v3 = %x2[%139]
+
+label .L6
+%143 = %126
+%142 = %a1[%143]
+%147 = %130
+%146 = %x2[%147]
+%150 = %142 / %146
+%152 = %150 mod #2
+if %152 != #1 goto .L5
+
+if %d1 != #0 goto .L5
+
+%156 = %pos1 mod #30
+%155 = %x2[%156]
+%v3 = %v3 - %155
+
+label .L5
+%160 = %115
+%163 = %a1[%160]
+%167 = %163 + %v3
+%a1[%160] = %167
+%2 = #0
+
+label .L3
+return %2
+
+function rand():
+
+
+
+%171 = @seed[#0]
+%175 = @staticvalue * %171
+%176 = @seed[#1]
+@staticvalue = %175 + %176
+%181 = @seed[#2]
+@staticvalue = @staticvalue mod %181
+if @staticvalue >= #0 goto .L7
+
+%187 = %181
+@staticvalue = %187 + @staticvalue
+
+label .L7
+%170 = @staticvalue
+
+return %170
+
+function main():
+
+
+
+%n14 = alloca(%n14) #4
+%n14 = call getint()
+@staticvalue = call getint()
+call starttime()
+%x14 = alloca(%x14) #4
+%y14 = alloca(%y14) #4
+
+label .L8
+if %n14 <= #0 goto .L9
+
+%n14 = %n14 - #1
+%199 = call rand()
+%201 = %199 mod #300000
+%202 = call rand()
+%204 = %202 mod #2
+%206 = & @a
+%208 = call set(%206,%201,%204)
+goto .L8
+
+label .L9
+call stoptime()
+%211 = & @a
+call putarray(#10000,%211)
+%193 = #0
+
+return %193
+

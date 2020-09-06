@@ -1,0 +1,40 @@
+function dec2bin(%a1):
+
+
+
+%res2 = alloca(%res2) #4
+%k2 = alloca(%k2) #4
+%i2 = alloca(%i2) #4
+%temp2 = alloca(%temp2) #4
+%res2 = #0
+%k2 = #1
+%temp2 = %a1
+
+label .L1
+if %temp2 == #0 goto .L2
+
+%7 = %temp2 mod #2
+%8 = %k2 * %7
+%res2 = %8 + %res2
+%k2 = %k2 * #10
+%temp2 = %temp2 / #2
+goto .L1
+
+label .L2
+%2 = %res2
+
+return %2
+
+function main():
+
+
+
+%a5 = alloca(%a5) #4
+%res5 = alloca(%res5) #4
+%17 = call dec2bin(#400)
+call putint(%17)
+call putch(#10)
+%15 = #0
+
+return %15
+

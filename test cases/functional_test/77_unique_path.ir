@@ -1,0 +1,87 @@
+function uniquePaths(%m1,%n1):
+%dp3 = alloca #36
+
+
+
+if %m1 == #1 goto .L11
+
+if %n1 != #1 goto .L2
+
+label .L11
+%2 = #1
+goto .L1
+
+label .L2
+%6 = & %dp3
+call memset(%6,#0,#36)
+%i3 = alloca(%i3) #4
+%j3 = alloca(%j3) #4
+%i3 = #0
+
+label .L3
+if %i3 >= %m1 goto .L4
+
+%9 = %i3 * #3
+%10 = %9 + %n1
+%12 = %10 - #1
+%dp3[%12] = #1
+%i3 = %i3 + #1
+goto .L3
+
+label .L4
+%i3 = #0
+
+label .L5
+if %i3 >= %n1 goto .L6
+
+%20 = %m1 - #1
+%22 = %20 * #3
+%23 = %22 + %i3
+%dp3[%23] = #1
+%i3 = %i3 + #1
+goto .L5
+
+label .L6
+%i3 = %m1 - #2
+
+label .L9
+if %i3 <= #-1 goto .L10
+
+%j3 = %n1 - #2
+
+label .L7
+if %j3 <= #-1 goto .L8
+
+%38 = %i3 * #3
+%39 = %38 + %j3
+%44 = %i3 + #1
+%46 = %44 * #3
+%47 = %46 + %j3
+%42 = %dp3[%47]
+%55 = %39 + #1
+%50 = %dp3[%55]
+%58 = %42 + %50
+%dp3[%39] = %58
+%j3 = %j3 - #1
+goto .L7
+
+label .L8
+%i3 = %i3 - #1
+goto .L9
+
+label .L10
+%2 = %dp3[#0]
+
+label .L1
+return %2
+
+function main():
+
+
+
+%res9 = alloca(%res9) #4
+%n9 = alloca(%n9) #4
+%68 = call uniquePaths(#3,#3)
+
+return %68
+

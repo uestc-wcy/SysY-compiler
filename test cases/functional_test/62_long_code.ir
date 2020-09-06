@@ -1,0 +1,521 @@
+int_non_init @n
+function bubblesort(%arr1[]):
+
+
+
+%i2 = alloca(%i2) #4
+%j2 = alloca(%j2) #4
+%i2 = #0
+
+label .L4
+%5 = @n - #1
+if %i2 >= %5 goto .L5
+
+%j2 = #0
+
+label .L1
+%7 = @n - %i2
+%9 = %7 - #1
+if %j2 >= %9 goto .L3
+
+%10 = %arr1[%j2]
+%15 = %j2 + #1
+%13 = %arr1[%15]
+if %10 <= %13 goto .L2
+
+%tmp5 = alloca(%tmp5) #4
+%20 = %15
+%18 = %arr1[%20]
+%27 = %10
+%arr1[%20] = %27
+%arr1[%j2] = %18
+
+label .L2
+%j2 = %15
+goto .L1
+
+label .L3
+%i2 = %i2 + #1
+goto .L4
+
+label .L5
+%2 = #0
+
+return %2
+
+function insertsort(%a6[]):
+
+
+
+%i7 = alloca(%i7) #4
+%i7 = #1
+
+label .L8
+if %i7 >= @n goto .L9
+
+%temp8 = alloca(%temp8) #4
+%temp8 = %a6[%i7]
+%j8 = alloca(%j8) #4
+%j8 = %i7 - #1
+
+label .L6
+if %j8 <= #-1 goto .L7
+
+%47 = %a6[%j8]
+if %temp8 >= %47 goto .L7
+
+%51 = %j8 + #1
+%54 = %47
+%a6[%51] = %54
+%j8 = %j8 - #1
+goto .L6
+
+label .L7
+%60 = %j8 + #1
+%a6[%60] = %temp8
+%i7 = %i7 + #1
+goto .L8
+
+label .L9
+%38 = #0
+
+return %38
+
+function QuickSort(%arr10[],%low10,%high10):
+
+
+
+if %low10 >= %high10 goto .L17
+
+%i12 = alloca(%i12) #4
+%i12 = %low10
+%j12 = alloca(%j12) #4
+%j12 = %high10
+%k12 = alloca(%k12) #4
+%k12 = %arr10[%low10]
+
+label .L14
+if %i12 >= %j12 goto .L16
+
+label .L10
+if %i12 >= %j12 goto .L11
+
+%71 = %arr10[%j12]
+%75 = %k12 - #1
+if %71 <= %75 goto .L11
+
+%j12 = %j12 - #1
+goto .L10
+
+label .L11
+if %i12 >= %j12 goto .L12
+
+%80 = %arr10[%j12]
+%arr10[%i12] = %80
+%i12 = %i12 + #1
+
+label .L12
+if %i12 >= %j12 goto .L13
+
+%85 = %arr10[%i12]
+if %85 >= %k12 goto .L13
+
+%i12 = %i12 + #1
+goto .L12
+
+label .L13
+if %i12 >= %j12 goto .L15
+
+%92 = %arr10[%i12]
+%arr10[%j12] = %92
+%j12 = %j12 - #1
+
+label .L15
+goto .L14
+
+label .L16
+%arr10[%i12] = %k12
+%tmp17 = alloca(%tmp17) #4
+%100 = %i12 - #1
+%102 = & %arr10
+%104 = call QuickSort(%102,%low10,%100)
+%106 = %i12 + #1
+%110 = call QuickSort(%102,%106,%high10)
+
+label .L17
+%67 = #0
+
+return %67
+
+function getMid(%arr18[]):
+
+
+
+%mid19 = alloca(%mid19) #4
+%115 = @n mod #2
+if %115 != #0 goto .L19
+
+%118 = @n / #2
+%119 = %arr18[%118]
+%124 = %118 - #1
+%122 = %arr18[%124]
+%127 = %119 + %122
+%113 = %127 / #2
+goto .L18
+
+label .L19
+%131 = @n / #2
+%113 = %arr18[%131]
+goto .L18
+
+label .L18
+return %113
+
+function getMost(%arr22[]):
+%count23 = alloca #4000
+
+
+
+%137 = & %count23
+call memset(%137,#0,#4000)
+%i23 = alloca(%i23) #4
+%i23 = #0
+
+label .L20
+if %i23 >= #1000 goto .L21
+
+%count23[%i23] = #0
+%i23 = %i23 + #1
+goto .L20
+
+label .L21
+%i23 = #0
+%max24 = alloca(%max24) #4
+%number24 = alloca(%number24) #4
+%max24 = #0
+
+label .L22
+if %i23 >= @n goto .L24
+
+%num25 = alloca(%num25) #4
+%147 = %arr22[%i23]
+%num25 = %147
+%152 = %count23[%num25]
+%156 = %152 + #1
+%count23[%147] = %156
+%157 = %count23[%num25]
+if %157 <= %max24 goto .L23
+
+%max24 = %152
+%number24 = %num25
+
+label .L23
+%i23 = %i23 + #1
+goto .L22
+
+label .L24
+%136 = %number24
+
+return %136
+
+function revert(%arr27[]):
+
+
+
+%temp28 = alloca(%temp28) #4
+%i28 = alloca(%i28) #4
+%j28 = alloca(%j28) #4
+%i28 = #0
+%j28 = #0
+
+label .L25
+if %i28 >= %j28 goto .L26
+
+%169 = %arr27[%i28]
+%174 = %arr27[%j28]
+%arr27[%i28] = %174
+%arr27[%j28] = %169
+%i28 = %i28 + #1
+%j28 = %j28 - #1
+goto .L25
+
+label .L26
+%166 = #0
+
+return %166
+
+function arrCopy(%src30[],%target30[]):
+
+
+
+%i31 = alloca(%i31) #4
+%i31 = #0
+
+label .L27
+if %i31 >= @n goto .L28
+
+%189 = %src30[%i31]
+%target30[%i31] = %189
+%i31 = %i31 + #1
+goto .L27
+
+label .L28
+%185 = #0
+
+return %185
+
+function calSum(%arr33[],%stride33):
+
+
+
+%sum34 = alloca(%sum34) #4
+%sum34 = #0
+%i34 = alloca(%i34) #4
+%i34 = #0
+
+label .L30
+if %i34 >= @n goto .L32
+
+%199 = %arr33[%i34]
+%sum34 = %sum34 + %199
+%203 = %i34 mod %stride33
+%205 = %stride33 - #1
+if %203 == %205 goto .L31
+
+%arr33[%i34] = #0
+goto .L29
+
+label .L31
+%arr33[%i34] = %sum34
+%sum34 = #0
+
+label .L29
+%i34 = %i34 + #1
+goto .L30
+
+label .L32
+%196 = #0
+
+return %196
+
+function avgPooling(%arr38[],%stride38):
+
+
+
+%sum39 = alloca(%sum39) #4
+%i39 = alloca(%i39) #4
+%i39 = #0
+%sum39 = #0
+%lastnum39 = alloca(%lastnum39) #4
+
+label .L34
+if %i39 >= @n goto .L37
+
+%220 = %stride38 - #1
+if %i39 >= %220 goto .L35
+
+%221 = %arr38[%i39]
+%sum39 = %sum39 + %221
+goto .L33
+
+label .L35
+%226 = %220
+if %i39 != %226 goto .L36
+
+%lastnum39 = %arr38[#0]
+%234 = %sum39 / %stride38
+%arr38[#0] = %234
+goto .L33
+
+label .L36
+%235 = %arr38[%i39]
+%238 = %sum39 + %235
+%sum39 = %238 - %lastnum39
+%241 = %i39 - %stride38
+%243 = %241 + #1
+%lastnum39 = %arr38[%243]
+%246 = %i39 - %stride38
+%248 = %246 + #1
+%251 = %sum39 / %stride38
+%arr38[%248] = %251
+
+label .L33
+%i39 = %i39 + #1
+goto .L34
+
+label .L37
+%254 = @n - %stride38
+%i39 = %254 + #1
+
+label .L38
+if %i39 >= @n goto .L39
+
+%arr38[%i39] = #0
+%i39 = %i39 + #1
+goto .L38
+
+label .L39
+%216 = #0
+
+return %216
+
+function main():
+%arr47 = alloca #128
+%result47 = alloca #128
+
+
+
+@n = #32
+%266 = & %arr47
+call memset(%266,#0,#128)
+%267 = & %result47
+call memset(%267,#0,#128)
+%arr47[#0] = #7
+%arr47[#1] = #23
+%arr47[#2] = #89
+%arr47[#3] = #26
+%arr47[#4] = #282
+%arr47[#5] = #254
+%arr47[#6] = #27
+%arr47[#7] = #5
+%arr47[#8] = #83
+%arr47[#9] = #273
+%arr47[#10] = #574
+%arr47[#11] = #905
+%arr47[#12] = #354
+%arr47[#13] = #657
+%arr47[#14] = #935
+%arr47[#15] = #264
+%arr47[#16] = #639
+%arr47[#17] = #459
+%arr47[#18] = #29
+%arr47[#19] = #68
+%arr47[#20] = #929
+%arr47[#21] = #756
+%arr47[#22] = #452
+%arr47[#23] = #279
+%arr47[#24] = #58
+%arr47[#25] = #87
+%arr47[#26] = #96
+%arr47[#27] = #36
+%arr47[#28] = #39
+%arr47[#29] = #28
+%arr47[#30] = #1
+%arr47[#31] = #290
+%t47 = alloca(%t47) #4
+%400 = & %result47
+%402 = call arrCopy(%266,%400)
+%404 = & %result47
+%406 = call revert(%404)
+%i47 = alloca(%i47) #4
+%i47 = #0
+
+label .L40
+if %i47 >= #32 goto .L41
+
+%409 = %result47[%i47]
+call putint(%409)
+%i47 = %i47 + #1
+goto .L40
+
+label .L41
+%415 = & %result47
+%417 = call bubblesort(%415)
+%i47 = #0
+
+label .L42
+if %i47 >= #32 goto .L43
+
+%420 = %result47[%i47]
+call putint(%420)
+%i47 = %i47 + #1
+goto .L42
+
+label .L43
+%426 = & %result47
+%428 = call getMid(%426)
+call putint(%428)
+%432 = call getMost(%426)
+call putint(%432)
+%434 = & %arr47
+%439 = call arrCopy(%434,%426)
+%443 = call bubblesort(%426)
+%i47 = #0
+
+label .L44
+if %i47 >= #32 goto .L45
+
+%446 = %result47[%i47]
+call putint(%446)
+%i47 = %i47 + #1
+goto .L44
+
+label .L45
+%452 = & %arr47
+%455 = & %result47
+%457 = call arrCopy(%452,%455)
+%459 = & %result47
+%461 = call insertsort(%459)
+%i47 = #0
+
+label .L46
+if %i47 >= #32 goto .L47
+
+%464 = %result47[%i47]
+call putint(%464)
+%i47 = %i47 + #1
+goto .L46
+
+label .L47
+%470 = & %arr47
+%473 = & %result47
+%475 = call arrCopy(%470,%473)
+%i47 = #0
+%479 = & %result47
+%481 = call QuickSort(%479,#0,#31)
+
+label .L48
+if %i47 >= #32 goto .L49
+
+%483 = %result47[%i47]
+call putint(%483)
+%i47 = %i47 + #1
+goto .L48
+
+label .L49
+%489 = & %arr47
+%492 = & %result47
+%494 = call arrCopy(%489,%492)
+%496 = & %result47
+%499 = call calSum(%496,#4)
+%i47 = #0
+
+label .L50
+if %i47 >= #32 goto .L51
+
+%502 = %result47[%i47]
+call putint(%502)
+%i47 = %i47 + #1
+goto .L50
+
+label .L51
+%508 = & %arr47
+%511 = & %result47
+%513 = call arrCopy(%508,%511)
+%515 = & %result47
+%518 = call avgPooling(%515,#3)
+%i47 = #0
+
+label .L52
+if %i47 >= #32 goto .L53
+
+%521 = %result47[%i47]
+call putint(%521)
+%i47 = %i47 + #1
+goto .L52
+
+label .L53
+%264 = #0
+
+return %264
+

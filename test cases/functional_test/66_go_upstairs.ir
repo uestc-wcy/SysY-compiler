@@ -1,0 +1,48 @@
+function climbStairs(%n1):
+%dp3 = alloca #40
+
+
+
+if %n1 >= #4 goto .L2
+
+%2 = %n1
+goto .L1
+
+label .L2
+%4 = & %dp3
+call memset(%4,#0,#40)
+%dp3[#0] = #0
+%dp3[#1] = #1
+%dp3[#2] = #2
+%i3 = alloca(%i3) #4
+%i3 = #3
+
+label .L3
+%19 = %n1 + #1
+if %i3 >= %19 goto .L4
+
+%24 = %i3 - #1
+%22 = %dp3[%24]
+%29 = %i3 - #2
+%27 = %dp3[%29]
+%32 = %22 + %27
+%dp3[%i3] = %32
+%i3 = %i3 + #1
+goto .L3
+
+label .L4
+%2 = %dp3[%n1]
+
+label .L1
+return %2
+
+function main():
+
+
+
+%res6 = alloca(%res6) #4
+%n6 = alloca(%n6) #4
+%39 = call climbStairs(#5)
+
+return %39
+

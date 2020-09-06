@@ -1,0 +1,62 @@
+function main():
+%a2 = alloca #40
+
+
+
+%i2 = alloca(%i2) #4
+%sum2 = alloca(%sum2) #4
+%3 = & %a2
+call memset(%3,#0,#40)
+%i2 = #0
+
+label .L1
+if %i2 >= #10 goto .L2
+
+%10 = %i2 + #1
+%a2[%i2] = %10
+%i2 = %10
+goto .L1
+
+label .L2
+%x3 = alloca(%x3) #4
+%high3 = alloca(%high3) #4
+%low3 = alloca(%low3) #4
+%mid3 = alloca(%mid3) #4
+%n3 = alloca(%n3) #4
+%x3 = call getint()
+%flag3 = alloca(%flag3) #4
+%flag3 = #0
+%i2 = #0
+%j3 = alloca(%j3) #4
+%j3 = #0
+
+label .L3
+if %i2 >= #10 goto .L5
+
+if %flag3 != #0 goto .L5
+
+%26 = %a2[%i2]
+if %26 != %x3 goto .L4
+
+%flag3 = #1
+%j3 = %i2
+
+label .L4
+%i2 = %i2 + #1
+goto .L3
+
+label .L5
+if %flag3 != #1 goto .L7
+
+call putint(%j3)
+goto .L6
+
+label .L7
+call putint(#0)
+
+label .L6
+call putch(#10)
+%2 = #0
+
+return %2
+

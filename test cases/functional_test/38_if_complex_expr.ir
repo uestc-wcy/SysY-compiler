@@ -1,0 +1,46 @@
+function main():
+
+
+
+%a2 = alloca(%a2) #4
+%b2 = alloca(%b2) #4
+%c2 = alloca(%c2) #4
+%d2 = alloca(%d2) #4
+%result2 = alloca(%result2) #4
+%a2 = #5
+%b2 = #5
+%c2 = #1
+%d2 = #-2
+%result2 = #2
+if #-1 < #0 goto .L4
+
+%14 = %a2 - %b2
+if %14 == #0 goto .L3
+
+%17 = %c2 + #3
+%19 = %17 mod #2
+if %19 == #0 goto .L3
+
+label .L4
+call putint(%result2)
+
+label .L3
+%22 = %d2 mod #2
+%24 = %22 + #67
+if %24 < #0 goto .L2
+
+%26 = %a2 - %b2
+if %26 == #0 goto .L1
+
+%29 = %c2 + #2
+%31 = %29 mod #2
+if %31 == #0 goto .L1
+
+label .L2
+call putint(#4)
+
+label .L1
+%2 = #0
+
+return %2
+

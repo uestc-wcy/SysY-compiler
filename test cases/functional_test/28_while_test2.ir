@@ -1,0 +1,61 @@
+function FourWhile():
+
+
+
+%a2 = alloca(%a2) #4
+%a2 = #5
+%b2 = alloca(%b2) #4
+%c2 = alloca(%c2) #4
+%b2 = #6
+%c2 = #7
+%d2 = alloca(%d2) #4
+%d2 = #10
+
+label .L7
+if %a2 >= #20 goto .L8
+
+%a2 = %a2 + #3
+
+label .L5
+if %b2 >= #10 goto .L6
+
+%b2 = %b2 + #1
+
+label .L3
+if %c2 != #7 goto .L4
+
+%c2 = %c2 - #1
+
+label .L1
+if %d2 >= #20 goto .L2
+
+%d2 = %d2 + #3
+goto .L1
+
+label .L2
+%d2 = %d2 - #1
+goto .L3
+
+label .L4
+%c2 = %c2 + #1
+goto .L5
+
+label .L6
+%b2 = %b2 - #2
+goto .L7
+
+label .L8
+%25 = %b2 + %d2
+%26 = %a2 + %25
+%2 = %26 + %c2
+
+return %2
+
+function main():
+
+
+
+%29 = call FourWhile()
+
+return %29
+

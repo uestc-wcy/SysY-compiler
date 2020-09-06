@@ -1,0 +1,106 @@
+int_non_init @n
+function counting_sort(%ini_arr1[],%sorted_arr1[],%n1):
+%count_arr2 = alloca #40
+
+
+
+%3 = & %count_arr2
+call memset(%3,#0,#40)
+%i2 = alloca(%i2) #4
+%j2 = alloca(%j2) #4
+%k2 = alloca(%k2) #4
+%k2 = #0
+%i2 = #0
+
+label .L1
+if %k2 >= #10 goto .L2
+
+%count_arr2[%k2] = #0
+%k2 = %k2 + #1
+goto .L1
+
+label .L2
+if %i2 >= %n1 goto .L3
+
+%13 = %ini_arr1[%i2]
+%18 = %count_arr2[%13]
+%25 = %18 + #1
+%count_arr2[%13] = %25
+%i2 = %i2 + #1
+goto .L2
+
+label .L3
+%k2 = #1
+
+label .L4
+if %k2 >= #10 goto .L5
+
+%32 = %count_arr2[%k2]
+%37 = %k2 - #1
+%35 = %count_arr2[%37]
+%40 = %32 + %35
+%count_arr2[%k2] = %40
+%k2 = %k2 + #1
+goto .L4
+
+label .L5
+%j2 = %n1
+
+label .L6
+if %j2 <= #0 goto .L7
+
+%46 = %j2 - #1
+%44 = %ini_arr1[%46]
+%51 = %count_arr2[%44]
+%60 = %51 - #1
+%count_arr2[%44] = %60
+%sorted_arr1[%61] = %44
+%j2 = %46
+goto .L6
+
+label .L7
+%2 = #0
+
+return %2
+
+function main():
+%a8 = alloca #40
+%b8 = alloca #40
+
+
+
+@n = #10
+%82 = & %a8
+call memset(%82,#0,#40)
+%a8[#0] = #4
+%a8[#1] = #3
+%a8[#2] = #9
+%a8[#3] = #2
+%a8[#4] = #0
+%a8[#5] = #1
+%a8[#6] = #6
+%a8[#7] = #5
+%a8[#8] = #7
+%a8[#9] = #8
+%i8 = alloca(%i8) #4
+%i8 = #0
+%124 = & %b8
+call memset(%124,#0,#40)
+%129 = & %b8
+%i8 = call counting_sort(%82,%129,@n)
+
+label .L8
+if %i8 >= @n goto .L9
+
+%tmp9 = alloca(%tmp9) #4
+%132 = %b8[%i8]
+call putint(%132)
+call putch(#10)
+%i8 = %i8 + #1
+goto .L8
+
+label .L9
+%80 = #0
+
+return %80
+

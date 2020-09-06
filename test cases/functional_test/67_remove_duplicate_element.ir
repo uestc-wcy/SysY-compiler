@@ -1,0 +1,53 @@
+function removeElement(%nums1[],%n1,%val1):
+
+
+
+%i2 = alloca(%i2) #4
+%i2 = #0
+
+label .L2
+if %i2 >= %n1 goto .L4
+
+%4 = %nums1[%i2]
+if %4 != %val1 goto .L3
+
+%11 = %n1 - #1
+%9 = %nums1[%11]
+%nums1[%i2] = %9
+%n1 = %11
+goto .L1
+
+label .L3
+%i2 = %i2 + #1
+
+label .L1
+goto .L2
+
+label .L4
+%2 = %n1
+
+return %2
+
+function main():
+%a7 = alloca #40
+
+
+
+%res7 = alloca(%res7) #4
+%20 = & %a7
+call memset(%20,#0,#40)
+%a7[#0] = #3
+%a7[#1] = #3
+%a7[#2] = #9
+%a7[#3] = #0
+%a7[#4] = #0
+%a7[#5] = #1
+%a7[#6] = #1
+%a7[#7] = #5
+%a7[#8] = #7
+%a7[#9] = #8
+%val7 = alloca(%val7) #4
+%19 = call removeElement(%20,#10,#3)
+
+return %19
+

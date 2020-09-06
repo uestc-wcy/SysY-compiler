@@ -1,0 +1,45 @@
+array_non_init @a = [27]
+function main():
+
+
+
+%i2 = alloca(%i2) #4
+%j2 = alloca(%j2) #4
+%k2 = alloca(%k2) #4
+%i2 = #0
+%j2 = #0
+%k2 = #0
+%cnt2 = alloca(%cnt2) #4
+%cnt2 = #0
+
+label .L5
+if %i2 >= #3 goto .L6
+
+label .L3
+if %j2 >= #3 goto .L4
+
+label .L1
+if %k2 >= #3 goto .L2
+
+%12 = %j2 * #3
+%13 = %12 + %k2
+%14 = %i2 * #9
+%15 = %14 + %13
+@a[%15] = %cnt2
+%cnt2 = %cnt2 + #1
+%k2 = %k2 + #1
+goto .L1
+
+label .L2
+%j2 = %j2 + #1
+goto .L3
+
+label .L4
+%i2 = %i2 + #1
+goto .L5
+
+label .L6
+%2 = #0
+
+return %2
+

@@ -1,0 +1,45 @@
+var_array_init @a = [25]{1,2,3,4,5,0.80}
+function func(%a1[]):
+
+
+
+%i2 = alloca(%i2) #4
+%i2 = #0
+%j2 = alloca(%j2) #4
+%j2 = #0
+%sum2 = alloca(%sum2) #4
+%sum2 = #0
+
+label .L3
+if %i2 >= #5 goto .L4
+
+label .L1
+if %j2 >= #5 goto .L2
+
+%11 = %i2 * #5
+%12 = %11 + %j2
+%8 = %a1[%12]
+%sum2 = %sum2 + %8
+%j2 = %j2 + #1
+goto .L1
+
+label .L2
+%i2 = %i2 + #1
+goto .L3
+
+label .L4
+%2 = %sum2
+
+return %2
+
+function main():
+
+
+
+%21 = & @a
+%23 = call func(%21)
+call putint(%23)
+%19 = #0
+
+return %19
+

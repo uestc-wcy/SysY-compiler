@@ -1,0 +1,109 @@
+int_non_init @g
+int_non_init @h
+int_non_init @f
+int_non_init @e
+function EightWhile():
+
+
+
+%a2 = alloca(%a2) #4
+%a2 = #5
+%b2 = alloca(%b2) #4
+%c2 = alloca(%c2) #4
+%b2 = #6
+%c2 = #7
+%d2 = alloca(%d2) #4
+%d2 = #10
+
+label .L15
+if %a2 >= #20 goto .L16
+
+%a2 = %a2 + #3
+
+label .L13
+if %b2 >= #10 goto .L14
+
+%b2 = %b2 + #1
+
+label .L11
+if %c2 != #7 goto .L12
+
+%c2 = %c2 - #1
+
+label .L9
+if %d2 >= #20 goto .L10
+
+%d2 = %d2 + #3
+
+label .L7
+if @e <= #1 goto .L8
+
+@e = @e - #1
+
+label .L5
+if @f <= #2 goto .L6
+
+@f = @f - #2
+
+label .L3
+if @g >= #3 goto .L4
+
+@g = @g + #10
+
+label .L1
+if @h >= #10 goto .L2
+
+@h = @h + #8
+goto .L1
+
+label .L2
+@h = @h - #1
+goto .L3
+
+label .L4
+@g = @g - #8
+goto .L5
+
+label .L6
+@f = @f + #1
+goto .L7
+
+label .L8
+@e = @e + #1
+goto .L9
+
+label .L10
+%d2 = %d2 - #1
+goto .L11
+
+label .L12
+%c2 = %c2 + #1
+goto .L13
+
+label .L14
+%b2 = %b2 - #2
+goto .L15
+
+label .L16
+%45 = %b2 + %d2
+%46 = %a2 + %45
+%47 = %46 + %c2
+%48 = @e + %d2
+%49 = %48 - @g
+%50 = %49 + @h
+%2 = %47 - %50
+
+return %2
+
+function main():
+
+
+
+@g = #1
+@h = #2
+@e = #4
+@f = #6
+%53 = call EightWhile()
+
+return %53
+

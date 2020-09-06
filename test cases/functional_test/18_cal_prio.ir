@@ -1,0 +1,16 @@
+int_non_init @a
+int_non_init @b
+int_non_init @c
+function main():
+
+
+
+@a = call getint()
+@b = call getint()
+@c = call getint()
+%d2 = alloca(%d2) #4
+%6 = @b * @c
+%2 = @a + %6
+
+return %2
+

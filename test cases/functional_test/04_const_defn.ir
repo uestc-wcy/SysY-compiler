@@ -1,0 +1,9 @@
+const_int_init @x = 4
+function main():
+
+
+
+%2 = #4
+
+return %2
+

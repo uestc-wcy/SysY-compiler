@@ -1,0 +1,100 @@
+function concat(%a01[],%b01[],%c01[]):
+
+
+
+%i2 = alloca(%i2) #4
+%i2 = #0
+
+label .L1
+if %i2 >= #3 goto .L2
+
+%7 = %a01[%i2]
+%c01[%i2] = %7
+%i2 = %i2 + #1
+goto .L1
+
+label .L2
+%j3 = alloca(%j3) #4
+%j3 = #0
+
+label .L3
+if %j3 >= #3 goto .L4
+
+%16 = %b01[%j3]
+%c01[%i2] = %16
+%i2 = %i2 + #1
+%j3 = %j3 + #1
+goto .L3
+
+label .L4
+%2 = #0
+
+return %2
+
+function main():
+%a06 = alloca #12
+%a16 = alloca #12
+%a26 = alloca #12
+%b06 = alloca #12
+%b16 = alloca #12
+%b26 = alloca #12
+%c06 = alloca #24
+%c16 = alloca #12
+%c26 = alloca #12
+
+
+
+%26 = & %a06
+call memset(%26,#0,#12)
+%27 = & %a16
+call memset(%27,#0,#12)
+%28 = & %a26
+call memset(%28,#0,#12)
+%29 = & %b06
+call memset(%29,#0,#12)
+%30 = & %b16
+call memset(%30,#0,#12)
+%31 = & %b26
+call memset(%31,#0,#12)
+%32 = & %c06
+call memset(%32,#0,#24)
+%33 = & %c16
+call memset(%33,#0,#12)
+%34 = & %c26
+call memset(%34,#0,#12)
+%i6 = alloca(%i6) #4
+%i6 = #0
+
+label .L5
+if %i6 >= #3 goto .L6
+
+%a06[%i6] = %i6
+%a16[%i6] = %i6
+%a26[%i6] = %i6
+%b06[%i6] = %i6
+%b16[%i6] = %i6
+%b26[%i6] = %i6
+%i6 = %i6 + #1
+goto .L5
+
+label .L6
+%52 = & %a06
+%55 = & %b06
+%58 = & %c06
+%i6 = call concat(%52,%55,%58)
+%x7 = alloca(%x7) #4
+
+label .L7
+if %i6 >= #6 goto .L8
+
+%62 = %c06[%i6]
+call putint(%62)
+%i6 = %i6 + #1
+goto .L7
+
+label .L8
+call putch(#10)
+%25 = #0
+
+return %25
+

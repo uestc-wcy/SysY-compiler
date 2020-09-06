@@ -1,0 +1,35 @@
+int_non_init @a
+function myFunc(%a1,%b1,%c1):
+
+
+
+%a1 = #2
+%c3 = alloca(%c3) #4
+if #0 == #0 goto .L2
+
+%2 = #0
+goto .L1
+
+label .L2
+if %b1 <= #0 goto .L3
+
+%b1 = %b1 - #1
+goto .L2
+
+label .L3
+%2 = %a1 + %b1
+
+label .L1
+return %2
+
+function main():
+
+
+
+@a = #3
+%b7 = alloca(%b7) #4
+%17 = call myFunc(#1,#2,#1)
+%12 = @a + %17
+
+return %12
+

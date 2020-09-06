@@ -1,0 +1,65 @@
+function wc(%string1[],%n1):
+
+
+
+%inWord2 = alloca(%inWord2) #4
+%i2 = alloca(%i2) #4
+%count2 = alloca(%count2) #4
+%i2 = #0
+%inWord2 = #0
+%count2 = #0
+
+label .L2
+if %i2 >= %n1 goto .L5
+
+%6 = %string1[%i2]
+if %6 == #32 goto .L4
+
+if %inWord2 != #0 goto .L3
+
+%count2 = %count2 + #1
+%inWord2 = #1
+
+label .L3
+goto .L1
+
+label .L4
+%inWord2 = #0
+
+label .L1
+%i2 = %i2 + #1
+goto .L2
+
+label .L5
+%2 = %count2
+
+return %2
+
+function main():
+%string8 = alloca #2000
+
+
+
+%19 = & %string8
+call memset(%19,#0,#2000)
+%temp8 = alloca(%temp8) #4
+%i8 = alloca(%i8) #4
+%i8 = #0
+%temp8 = #0
+
+label .L6
+if %temp8 == #10 goto .L7
+
+%temp8 = call getch()
+%string8[%i8] = %temp8
+%i8 = %i8 + #1
+goto .L6
+
+label .L7
+%29 = & %string8
+%31 = call wc(%29,%i8)
+call putint(%31)
+%18 = #0
+
+return %18
+

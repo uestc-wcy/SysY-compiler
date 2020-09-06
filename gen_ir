@@ -1,0 +1,14 @@
+cd "test cases"
+cd functional_test
+
+for file in `ls *.sy`
+do
+    `../../compiler < $file > ${file%.*}.ir`  
+done
+
+cd ../performance_test
+
+for file in `ls *.sy`
+do
+    `../../compiler < $file > ${file%.*}.ir`   
+done

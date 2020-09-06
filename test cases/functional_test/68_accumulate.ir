@@ -1,0 +1,22 @@
+function main():
+
+
+
+%i2 = alloca(%i2) #4
+%sum2 = alloca(%sum2) #4
+%sum2 = #0
+%i2 = #0
+
+label .L1
+if %i2 >= #21 goto .L2
+
+%sum2 = %sum2 + %i2
+%i2 = %i2 + #1
+goto .L1
+
+label .L2
+call putint(%sum2)
+%2 = #0
+
+return %2
+

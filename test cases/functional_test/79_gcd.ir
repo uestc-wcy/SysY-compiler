@@ -1,0 +1,41 @@
+int_non_init @n
+function gcd(%m1,%n1):
+
+
+
+%t2 = alloca(%t2) #4
+%r2 = alloca(%r2) #4
+if %m1 >= %n1 goto .L3
+
+%t2 = %m1
+%m1 = %n1
+%n1 = %t2
+
+label .L3
+%r2 = %m1 mod %n1
+
+label .L1
+if %r2 == #0 goto .L2
+
+%m1 = %n1
+%n1 = %r2
+%r2 = %m1 mod %r2
+goto .L1
+
+label .L2
+%2 = %n1
+
+return %2
+
+function main():
+
+
+
+%i6 = alloca(%i6) #4
+%m6 = alloca(%m6) #4
+%8 = call getint()
+%9 = call getint()
+%7 = call gcd(%8,%9)
+
+return %7
+

@@ -1,0 +1,182 @@
+const_int_init @N = 1024
+array_non_init @A = [1048576]
+array_non_init @B = [1048576]
+array_non_init @C = [1048576]
+function mm(%n1,%A1[],%B1[],%C1[]):
+
+
+
+%i2 = alloca(%i2) #4
+%j2 = alloca(%j2) #4
+%k2 = alloca(%k2) #4
+%i2 = #0
+
+label .L3
+if %i2 >= %n1 goto .L4
+
+%j2 = #0
+
+label .L1
+if %j2 >= %n1 goto .L2
+
+%7 = %i2 * #1024
+%8 = %7 + %j2
+%C1[%8] = #0
+%j2 = %j2 + #1
+goto .L1
+
+label .L2
+%i2 = %i2 + #1
+goto .L3
+
+label .L4
+%k2 = #0
+
+label .L10
+if %k2 >= %n1 goto .L11
+
+%i2 = #0
+
+label .L5
+if %i2 >= %n1 goto .L9
+
+%21 = %i2 * #1024
+%22 = %21 + %k2
+%18 = %A1[%22]
+if %18 != #0 goto .L6
+
+%i2 = %i2 + #1
+goto .L5
+
+label .L6
+%j2 = #0
+
+label .L7
+if %j2 >= %n1 goto .L8
+
+%29 = %i2 * #1024
+%30 = %29 + %j2
+%31 = %C1[%30]
+%40 = %29 + %k2
+%36 = %A1[%40]
+%44 = %k2 * #1024
+%45 = %44 + %j2
+%41 = %B1[%45]
+%46 = %36 * %41
+%47 = %31 + %46
+%C1[%30] = %47
+%j2 = %j2 + #1
+goto .L7
+
+label .L8
+%i2 = %i2 + #1
+goto .L5
+
+label .L9
+%k2 = %k2 + #1
+goto .L10
+
+label .L11
+return 
+
+function main():
+
+
+
+%n10 = alloca(%n10) #4
+%n10 = call getint()
+%i10 = alloca(%i10) #4
+%j10 = alloca(%j10) #4
+%i10 = #0
+
+label .L14
+if %i10 >= %n10 goto .L15
+
+%j10 = #0
+
+label .L12
+if %j10 >= %n10 goto .L13
+
+%62 = %i10 * #1024
+%63 = %62 + %j10
+%64 = call getint()
+@A[%63] = %64
+%j10 = %j10 + #1
+goto .L12
+
+label .L13
+%i10 = %i10 + #1
+goto .L14
+
+label .L15
+%i10 = #0
+
+label .L18
+if %i10 >= %n10 goto .L19
+
+%j10 = #0
+
+label .L16
+if %j10 >= %n10 goto .L17
+
+%74 = %i10 * #1024
+%75 = %74 + %j10
+%76 = call getint()
+@B[%75] = %76
+%j10 = %j10 + #1
+goto .L16
+
+label .L17
+%i10 = %i10 + #1
+goto .L18
+
+label .L19
+call starttime()
+%i10 = #0
+
+label .L20
+if %i10 >= #5 goto .L21
+
+%84 = & @A
+%87 = & @B
+%90 = & @C
+call mm(%n10,%84,%87,%90)
+%93 = & @A
+%96 = & @C
+%99 = & @B
+call mm(%n10,%93,%96,%99)
+%i10 = %i10 + #1
+goto .L20
+
+label .L21
+%ans15 = alloca(%ans15) #4
+%ans15 = #0
+%i10 = #0
+
+label .L24
+if %i10 >= %n10 goto .L25
+
+%j10 = #0
+
+label .L22
+if %j10 >= %n10 goto .L23
+
+%109 = %i10 * #1024
+%110 = %109 + %j10
+%106 = @B[%110]
+%ans15 = %ans15 + %106
+%j10 = %j10 + #1
+goto .L22
+
+label .L23
+%i10 = %i10 + #1
+goto .L24
+
+label .L25
+call stoptime()
+call putint(%ans15)
+call putch(#10)
+%55 = #0
+
+return %55
+

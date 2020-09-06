@@ -1,0 +1,168 @@
+int_non_init @a0
+int_non_init @a1
+int_non_init @a2
+int_non_init @a3
+int_non_init @a4
+int_non_init @a5
+int_non_init @a6
+int_non_init @a7
+int_non_init @a8
+int_non_init @a9
+int_non_init @a10
+int_non_init @a11
+int_non_init @a12
+int_non_init @a13
+int_non_init @a14
+int_non_init @a15
+int_non_init @a16
+int_non_init @a17
+int_non_init @a18
+int_non_init @a19
+int_non_init @a20
+int_non_init @a21
+int_non_init @a22
+int_non_init @a23
+int_non_init @a24
+int_non_init @a25
+int_non_init @a26
+int_non_init @a27
+int_non_init @a28
+int_non_init @a29
+int_non_init @a30
+int_non_init @a31
+int_non_init @a32
+int_non_init @a33
+int_non_init @a34
+int_non_init @a35
+int_non_init @a36
+int_non_init @a37
+int_non_init @a38
+int_non_init @a39
+function testParam8(%a01,%a11,%a21,%a31,%a41,%a51,%a61,%a71):
+
+
+
+%3 = %a01 + %a11
+%4 = %3 + %a21
+%5 = %4 + %a31
+%6 = %5 + %a41
+%7 = %6 + %a51
+%8 = %7 + %a61
+%2 = %8 + %a71
+
+return %2
+
+function testParam16(%a03,%a13,%a23,%a33,%a43,%a53,%a63,%a73,%a83,%a93,%a103,%a113,%a123,%a133,%a143,%a153):
+
+
+
+%12 = %a03 + %a13
+%13 = %12 + %a23
+%14 = %13 - %a33
+%15 = %14 - %a43
+%16 = %15 - %a53
+%17 = %16 - %a63
+%18 = %17 - %a73
+%19 = %18 + %a83
+%20 = %19 + %a93
+%21 = %20 + %a103
+%22 = %21 + %a113
+%23 = %22 + %a123
+%24 = %23 + %a133
+%25 = %24 + %a143
+%11 = %25 + %a153
+
+return %11
+
+function testParam32(%a05,%a15,%a25,%a35,%a45,%a55,%a65,%a75,%a85,%a95,%a105,%a115,%a125,%a135,%a145,%a155,%a165,%a175,%a185,%a195,%a205,%a215,%a225,%a235,%a245,%a255,%a265,%a275,%a285,%a295,%a305,%a315):
+
+
+
+%29 = %a05 + %a15
+%30 = %29 + %a25
+%31 = %30 + %a35
+%32 = %31 + %a45
+%33 = %32 + %a55
+%34 = %33 + %a65
+%35 = %34 + %a75
+%36 = %35 + %a85
+%37 = %36 + %a95
+%38 = %37 + %a105
+%39 = %38 + %a115
+%40 = %39 + %a125
+%41 = %40 + %a135
+%42 = %41 + %a145
+%43 = %42 + %a155
+%44 = %43 + %a165
+%45 = %44 + %a175
+%46 = %45 - %a185
+%47 = %46 - %a195
+%48 = %47 - %a205
+%49 = %48 - %a215
+%50 = %49 - %a225
+%51 = %50 + %a235
+%52 = %51 + %a245
+%53 = %52 + %a255
+%54 = %53 + %a265
+%55 = %54 + %a275
+%56 = %55 + %a285
+%57 = %56 + %a295
+%58 = %57 + %a305
+%28 = %58 + %a315
+
+return %28
+
+function main():
+
+
+
+@a0 = #0
+@a1 = #1
+@a2 = #2
+@a3 = #3
+@a4 = #4
+@a5 = #5
+@a6 = #6
+@a7 = #7
+@a8 = #8
+@a9 = #9
+@a10 = #0
+@a11 = #1
+@a12 = #2
+@a13 = #3
+@a14 = #4
+@a15 = #5
+@a16 = #6
+@a17 = #7
+@a18 = #8
+@a19 = #9
+@a20 = #0
+@a21 = #1
+@a22 = #2
+@a23 = #3
+@a24 = #4
+@a25 = #5
+@a26 = #6
+@a27 = #7
+@a28 = #8
+@a29 = #9
+@a30 = #0
+@a31 = #1
+@a32 = #4
+@a33 = #5
+@a34 = #6
+@a35 = #7
+@a36 = #8
+@a37 = #9
+@a38 = #0
+@a39 = #1
+@a0 = call testParam8(#0,#1,#2,#3,#4,#5,#6,#7)
+call putint(@a0)
+@a0 = call testParam16(@a32,@a33,@a34,@a35,@a36,@a37,@a38,@a39,@a8,@a9,@a10,@a11,@a12,@a13,@a14,@a15)
+call putint(@a0)
+@a0 = call testParam32(@a0,@a1,@a2,@a3,@a4,@a5,@a6,@a7,@a8,@a9,@a10,@a11,@a12,@a13,@a14,@a15,@a16,@a17,@a18,@a19,@a20,@a21,@a22,@a23,@a24,@a25,@a26,@a27,@a28,@a29,@a30,@a31)
+call putint(@a0)
+%61 = #0
+
+return %61
+

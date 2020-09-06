@@ -1,0 +1,48 @@
+function enc(%a1):
+
+
+
+if %a1 <= #25 goto .L2
+
+%a1 = %a1 + #60
+goto .L1
+
+label .L2
+%a1 = %a1 - #15
+
+label .L1
+%2 = %a1
+
+return %2
+
+function dec(%a5):
+
+
+
+if %a5 <= #85 goto .L4
+
+%a5 = %a5 - #59
+goto .L3
+
+label .L4
+%a5 = %a5 + #14
+
+label .L3
+%9 = %a5
+
+return %9
+
+function main():
+
+
+
+%a10 = alloca(%a10) #4
+%res10 = alloca(%res10) #4
+%18 = call enc(#400)
+%19 = call dec(%18)
+call putint(%19)
+call putch(#10)
+%16 = #0
+
+return %16
+

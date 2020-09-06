@@ -1,0 +1,17 @@
+function defn():
+
+
+
+%2 = #4
+
+return %2
+
+function main():
+
+
+
+%a4 = alloca(%a4) #4
+%5 = call defn()
+
+return %5
+

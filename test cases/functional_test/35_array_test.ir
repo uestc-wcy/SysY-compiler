@@ -1,0 +1,35 @@
+array_non_init @field = [2]
+function func(%array1[]):
+
+
+
+%5 = @field[#0]
+%9 = #3 - %5
+%2 = %array1[%9]
+
+return %2
+
+function main():
+%i4 = alloca #4
+%j4 = alloca #12
+
+
+
+%14 = & %i4
+call memset(%14,#0,#4)
+%15 = & %j4
+call memset(%15,#0,#12)
+%k4 = alloca(%k4) #4
+@field[#0] = #1
+@field[#1] = #2
+%j4[#0] = #-1
+%39 = #-1 - #2
+%j4[#1] = %39
+%j4[#2] = #16
+%49 = & %j4
+%51 = call func(%49)
+%53 = %51 + #2
+%13 = %53 + %39
+
+return %13
+

@@ -1,0 +1,21 @@
+var_int_init @a = 5
+var_array_init @s = [10]{0,1,2,3,4,5,6,7,8,9,0.0}
+function main():
+
+
+
+%i2 = alloca(%i2) #4
+%i2 = #0
+
+label .L1
+%4 = @s[%i2]
+if %4 > @a goto .L2
+
+%i2 = %i2 + #1
+goto .L1
+
+label .L2
+%2 = %i2
+
+return %2
+

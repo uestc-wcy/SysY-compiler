@@ -1,0 +1,134 @@
+int_non_init @n
+function swap(%array1[],%i1,%j1):
+
+
+
+%temp2 = alloca(%temp2) #4
+%3 = %array1[%i1]
+%8 = %array1[%j1]
+%array1[%i1] = %8
+%array1[%j1] = %3
+%2 = #0
+
+return %2
+
+function heap_ajust(%arr3[],%start3,%end3):
+
+
+
+%dad4 = alloca(%dad4) #4
+%dad4 = %start3
+%son4 = alloca(%son4) #4
+%17 = %start3 * #2
+%son4 = %17 + #1
+
+label .L3
+%21 = %end3 + #1
+if %son4 >= %21 goto .L5
+
+if %son4 >= %end3 goto .L4
+
+%22 = %arr3[%son4]
+%27 = %son4 + #1
+%25 = %arr3[%27]
+if %22 >= %25 goto .L4
+
+%son4 = %27
+
+label .L4
+%32 = %arr3[%dad4]
+%35 = %arr3[%son4]
+if %32 <= %35 goto .L2
+
+%15 = #0
+goto .L1
+
+label .L2
+%40 = & %arr3
+%dad4 = call swap(%40,%dad4,%son4)
+%dad4 = %son4
+%44 = %son4 * #2
+%son4 = %44 + #1
+
+goto .L3
+
+label .L5
+%15 = #0
+
+label .L1
+return %15
+
+function heap_sort(%arr9[],%len9):
+
+
+
+%i10 = alloca(%i10) #4
+%tmp10 = alloca(%tmp10) #4
+%51 = %len9 / #2
+%i10 = %51 - #1
+
+label .L6
+if %i10 <= #-1 goto .L7
+
+%57 = %len9 - #1
+%59 = & %arr9
+%61 = call heap_ajust(%59,%i10,%57)
+%i10 = %i10 - #1
+goto .L6
+
+label .L7
+%i10 = %len9 - #1
+
+label .L8
+if %i10 <= #0 goto .L9
+
+%tmp012 = alloca(%tmp012) #4
+%69 = & %arr9
+%71 = call swap(%69,#0,%i10)
+%73 = %i10 - #1
+%77 = call heap_ajust(%69,#0,%73)
+%i10 = %73
+goto .L8
+
+label .L9
+%49 = #0
+
+return %49
+
+function main():
+%a14 = alloca #40
+
+
+
+@n = #10
+%84 = & %a14
+call memset(%84,#0,#40)
+%a14[#0] = #4
+%a14[#1] = #3
+%a14[#2] = #9
+%a14[#3] = #2
+%a14[#4] = #0
+%a14[#5] = #1
+%a14[#6] = #6
+%a14[#7] = #5
+%a14[#8] = #7
+%a14[#9] = #8
+%i14 = alloca(%i14) #4
+%i14 = #0
+%i14 = call heap_sort(%84,@n)
+
+label .L10
+if %i14 >= @n goto .L11
+
+%tmp15 = alloca(%tmp15) #4
+%130 = %a14[%i14]
+call putint(%130)
+call putch(#10)
+%i14 = %i14 + #1
+goto .L10
+
+label .L11
+%82 = #0
+
+return %82
+

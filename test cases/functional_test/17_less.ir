@@ -1,0 +1,20 @@
+int_non_init @a
+int_non_init @b
+function main():
+
+
+
+@a = call getint()
+@b = call getint()
+if @a >= @b goto .L2
+
+%2 = #1
+goto .L1
+
+label .L2
+%2 = #0
+goto .L1
+
+label .L1
+return %2
+

@@ -1,0 +1,40 @@
+function main():
+%string2 = alloca #2000
+
+
+
+%3 = & %string2
+call memset(%3,#0,#2000)
+%temp2 = alloca(%temp2) #4
+%i2 = alloca(%i2) #4
+%count2 = alloca(%count2) #4
+%count2 = #0
+%i2 = #0
+%temp2 = #0
+
+label .L1
+if %temp2 == #10 goto .L5
+
+%temp2 = call getch()
+if %temp2 <= #40 goto .L4
+
+if %temp2 < #91 goto .L3
+
+label .L4
+if %temp2 <= #96 goto .L2
+
+if %temp2 >= #123 goto .L2
+
+label .L3
+%count2 = %count2 + #1
+
+label .L2
+%i2 = %i2 + #1
+goto .L1
+
+label .L5
+call putint(%count2)
+%2 = #0
+
+return %2
+

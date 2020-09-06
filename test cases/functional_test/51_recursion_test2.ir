@@ -1,0 +1,36 @@
+function fib(%n1):
+
+
+
+if %n1 != #0 goto .L2
+
+%2 = #0
+goto .L1
+
+label .L2
+if %n1 != #1 goto .L3
+
+%2 = #1
+goto .L1
+
+label .L3
+%p4 = alloca(%p4) #4
+%8 = %n1 - #1
+%q4 = alloca(%q4) #4
+%10 = %n1 - #2
+%11 = call fib(%8)
+%12 = call fib(%10)
+%2 = %11 + %12
+
+label .L1
+return %2
+
+function main():
+
+
+
+%tmp6 = alloca(%tmp6) #4
+%15 = call fib(#10)
+
+return %15
+

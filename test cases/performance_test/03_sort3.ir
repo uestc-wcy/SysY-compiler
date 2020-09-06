@@ -1,0 +1,222 @@
+const_int_init @base = 16
+array_non_init @a = [30000010]
+int_non_init @ans
+function getMaxNum(%n1,%arr1[]):
+
+
+
+%ret2 = alloca(%ret2) #4
+%ret2 = #0
+%i2 = alloca(%i2) #4
+%i2 = #0
+
+label .L1
+if %i2 >= %n1 goto .L3
+
+%5 = %arr1[%i2]
+if %5 <= %ret2 goto .L2
+
+%ret2 = %5
+
+label .L2
+%i2 = %i2 + #1
+goto .L1
+
+label .L3
+%2 = %ret2
+
+return %2
+
+function getNumPos(%num5,%pos5):
+
+
+
+%tmp6 = alloca(%tmp6) #4
+%i6 = alloca(%i6) #4
+%i6 = #0
+
+label .L4
+if %i6 >= %pos5 goto .L5
+
+%num5 = %num5 / #16
+%i6 = %i6 + #1
+goto .L4
+
+label .L5
+%14 = %num5 mod #16
+
+return %14
+
+function radixSort(%bitround8,%a8[],%l8,%r8):
+%head9 = alloca #64
+%tail9 = alloca #64
+%cnt9 = alloca #64
+
+
+
+%22 = & %head9
+call memset(%22,#0,#64)
+%23 = & %tail9
+call memset(%23,#0,#64)
+%24 = & %cnt9
+call memset(%24,#0,#64)
+if %bitround8 == #-1 goto .L21
+
+%28 = %l8 + #1
+if %28 < %r8 goto .L7
+
+label .L21
+goto .L6
+
+label .L7
+%i11 = alloca(%i11) #4
+%i11 = %l8
+
+label .L8
+if %i11 >= %r8 goto .L9
+
+%29 = %a8[%i11]
+%32 = call getNumPos(%29,%bitround8)
+%39 = call getNumPos(%29,%bitround8)
+%35 = %cnt9[%39]
+%43 = %35 + #1
+%cnt9[%32] = %43
+%i11 = %i11 + #1
+goto .L8
+
+label .L9
+%head9[#0] = %l8
+%52 = %cnt9[#0]
+%56 = %l8 + %52
+%tail9[#0] = %56
+%i11 = #1
+
+label .L10
+if %i11 >= #16 goto .L11
+
+%62 = %i11 - #1
+%60 = %tail9[%62]
+%head9[%i11] = %60
+%70 = %cnt9[%i11]
+%73 = %60 + %70
+%tail9[%i11] = %73
+%i11 = %i11 + #1
+goto .L10
+
+label .L11
+%i11 = #0
+
+label .L16
+if %i11 >= #16 goto .L17
+
+label .L14
+%77 = %112
+%80 = %tail9[%i11]
+if %77 >= %80 goto .L15
+
+%v15 = alloca(%v15) #4
+%84 = %77
+%v15 = %a8[%84]
+
+label .L12
+%89 = call getNumPos(%v15,%bitround8)
+if %89 == %i11 goto .L13
+
+%t16 = alloca(%t16) #4
+%t16 = %v15
+%92 = call getNumPos(%v15,%bitround8)
+%91 = %head9[%92]
+%v15 = %a8[%91]
+%98 = call getNumPos(%t16,%bitround8)
+%97 = %head9[%98]
+%a8[%97] = %t16
+%103 = call getNumPos(%t16,%bitround8)
+%107 = call getNumPos(%t16,%bitround8)
+%106 = %head9[%107]
+%111 = %106 + #1
+%head9[%103] = %111
+goto .L12
+
+label .L13
+%112 = %head9[%i11]
+%a8[%112] = %v15
+%123 = %112 + #1
+%head9[%i11] = %123
+goto .L14
+
+label .L15
+%i11 = %i11 + #1
+goto .L16
+
+label .L17
+%i17 = alloca(%i17) #4
+%i17 = %l8
+%head9[#0] = %l8
+%132 = %cnt9[#0]
+%136 = %l8 + %132
+%tail9[#0] = %136
+%i17 = #0
+
+label .L18
+if %i17 >= #16 goto .L20
+
+if %i17 <= #0 goto .L19
+
+%143 = %i17 - #1
+%141 = %tail9[%143]
+%head9[%i17] = %141
+%151 = %cnt9[%i17]
+%154 = %141 + %151
+%tail9[%i17] = %154
+
+label .L19
+%156 = %bitround8 - #1
+%158 = & %a8
+%160 = %head9[%i17]
+%163 = %tail9[%i17]
+call radixSort(%156,%158,%160,%163)
+%i17 = %i17 + #1
+goto .L18
+
+label .L20
+
+label .L6
+return 
+
+function main():
+
+
+
+%n21 = alloca(%n21) #4
+%171 = & @a
+%n21 = call getarray(%171)
+call starttime()
+%176 = & @a
+call radixSort(#8,%176,#0,%n21)
+%i21 = alloca(%i21) #4
+%i21 = #0
+
+label .L22
+if %i21 >= %n21 goto .L23
+
+%180 = @a[%i21]
+%184 = #2 + %i21
+%185 = %180 mod %184
+%186 = %i21 * %185
+@ans = @ans + %186
+%i21 = %i21 + #1
+goto .L22
+
+label .L23
+if @ans >= #0 goto .L24
+
+@ans = - @ans
+
+label .L24
+call stoptime()
+call putint(@ans)
+call putch(#10)
+%169 = #0
+
+return %169
+

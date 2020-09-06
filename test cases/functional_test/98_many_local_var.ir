@@ -1,0 +1,84 @@
+int_non_init @n
+function main():
+
+
+
+%a02 = alloca(%a02) #4
+%a12 = alloca(%a12) #4
+%a22 = alloca(%a22) #4
+%a32 = alloca(%a32) #4
+%a42 = alloca(%a42) #4
+%a52 = alloca(%a52) #4
+%a62 = alloca(%a62) #4
+%a72 = alloca(%a72) #4
+%a82 = alloca(%a82) #4
+%a92 = alloca(%a92) #4
+%a102 = alloca(%a102) #4
+%a112 = alloca(%a112) #4
+%a122 = alloca(%a122) #4
+%a132 = alloca(%a132) #4
+%a142 = alloca(%a142) #4
+%a152 = alloca(%a152) #4
+%a162 = alloca(%a162) #4
+%a172 = alloca(%a172) #4
+%a182 = alloca(%a182) #4
+%a192 = alloca(%a192) #4
+%a202 = alloca(%a202) #4
+%a212 = alloca(%a212) #4
+%a222 = alloca(%a222) #4
+%a232 = alloca(%a232) #4
+%a242 = alloca(%a242) #4
+%a252 = alloca(%a252) #4
+%a262 = alloca(%a262) #4
+%a272 = alloca(%a272) #4
+%a282 = alloca(%a282) #4
+%a292 = alloca(%a292) #4
+%b2 = alloca(%b2) #4
+%b2 = call getint()
+
+label .L1
+if %b2 != #5 goto .L2
+
+%b2 = %b2 + #1
+goto .L1
+
+label .L2
+%t3 = alloca(%t3) #4
+call putint(#0)
+call putint(#1)
+call putint(#2)
+call putint(#3)
+call putint(#4)
+call putint(#5)
+call putint(#6)
+call putint(#7)
+call putint(#8)
+call putint(#9)
+call putint(#10)
+call putint(#11)
+call putint(#12)
+call putint(#13)
+call putint(#14)
+call putint(#15)
+call putint(#16)
+call putint(#17)
+call putint(#18)
+call putint(#19)
+call putint(#20)
+call putint(#21)
+call putint(#22)
+call putint(#23)
+call putint(#24)
+call putint(#25)
+call putint(#26)
+call putint(#27)
+call putint(#28)
+call putint(#29)
+%newline3 = alloca(%newline3) #4
+call putch(#10)
+call putint(%b2)
+call putch(#10)
+%2 = #25
+
+return %2
+

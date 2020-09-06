@@ -1,0 +1,75 @@
+function maxArea(%height1[],%n1):
+
+
+
+%i2 = alloca(%i2) #4
+%j2 = alloca(%j2) #4
+%i2 = #0
+%j2 = %n1 - #1
+%max_val2 = alloca(%max_val2) #4
+%max_val2 = #-1
+
+label .L3
+if %i2 >= %j2 goto .L7
+
+%area3 = alloca(%area3) #4
+%8 = %height1[%i2]
+%11 = %height1[%j2]
+if %8 >= %11 goto .L6
+
+%14 = %j2 - %i2
+%15 = %8
+%area3 = %14 * %15
+goto .L1
+
+label .L6
+%19 = %j2 - %i2
+%20 = %11
+%area3 = %19 * %20
+
+label .L1
+if %area3 <= %max_val2 goto .L5
+
+%max_val2 = %area3
+
+label .L5
+%24 = %height1[%i2]
+%27 = %height1[%j2]
+if %24 <= %27 goto .L4
+
+%j2 = %j2 - #1
+goto .L2
+
+label .L4
+%i2 = %i2 + #1
+
+label .L2
+goto .L3
+
+label .L7
+%2 = %max_val2
+
+return %2
+
+function main():
+%a10 = alloca #40
+
+
+
+%res10 = alloca(%res10) #4
+%36 = & %a10
+call memset(%36,#0,#40)
+%a10[#0] = #3
+%a10[#1] = #3
+%a10[#2] = #9
+%a10[#3] = #0
+%a10[#4] = #0
+%a10[#5] = #1
+%a10[#6] = #1
+%a10[#7] = #5
+%a10[#8] = #7
+%a10[#9] = #8
+%35 = call maxArea(%36,#10)
+
+return %35
+

@@ -1,0 +1,29 @@
+int_non_init @a
+int_non_init @r
+function fac(%x1):
+
+
+
+if %x1 >= #2 goto .L2
+
+%2 = #1
+goto .L1
+
+label .L2
+@a = %x1 - #1
+@r = call fac(@a)
+@r = %x1 * @r
+%2 = @r
+
+label .L1
+return %2
+
+function main():
+
+
+
+%a5 = alloca(%a5) #4
+%10 = call fac(#5)
+
+return %10
+

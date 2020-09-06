@@ -1,0 +1,105 @@
+int_non_init @n
+function QuickSort(%arr1[],%low1,%high1):
+
+
+
+if %low1 >= %high1 goto .L8
+
+%i3 = alloca(%i3) #4
+%i3 = %low1
+%j3 = alloca(%j3) #4
+%j3 = %high1
+%k3 = alloca(%k3) #4
+%k3 = %arr1[%low1]
+
+label .L5
+if %i3 >= %j3 goto .L7
+
+label .L1
+if %i3 >= %j3 goto .L2
+
+%6 = %arr1[%j3]
+%10 = %k3 - #1
+if %6 <= %10 goto .L2
+
+%j3 = %j3 - #1
+goto .L1
+
+label .L2
+if %i3 >= %j3 goto .L3
+
+%15 = %arr1[%j3]
+%arr1[%i3] = %15
+%i3 = %i3 + #1
+
+label .L3
+if %i3 >= %j3 goto .L4
+
+%20 = %arr1[%i3]
+if %20 >= %k3 goto .L4
+
+%i3 = %i3 + #1
+goto .L3
+
+label .L4
+if %i3 >= %j3 goto .L6
+
+%27 = %arr1[%i3]
+%arr1[%j3] = %27
+%j3 = %j3 - #1
+
+label .L6
+goto .L5
+
+label .L7
+%arr1[%i3] = %k3
+%tmp8 = alloca(%tmp8) #4
+%35 = %i3 - #1
+%37 = & %arr1
+%39 = call QuickSort(%37,%low1,%35)
+%41 = %i3 + #1
+%45 = call QuickSort(%37,%41,%high1)
+
+label .L8
+%2 = #0
+
+return %2
+
+function main():
+%a10 = alloca #40
+
+
+
+@n = #10
+%50 = & %a10
+call memset(%50,#0,#40)
+%a10[#0] = #4
+%a10[#1] = #3
+%a10[#2] = #9
+%a10[#3] = #2
+%a10[#4] = #0
+%a10[#5] = #1
+%a10[#6] = #6
+%a10[#7] = #5
+%a10[#8] = #7
+%a10[#9] = #8
+%i10 = alloca(%i10) #4
+%i10 = #0
+%tmp10 = alloca(%tmp10) #4
+%i10 = call QuickSort(%50,#0,#9)
+
+label .L9
+if %i10 >= @n goto .L10
+
+%tmp11 = alloca(%tmp11) #4
+%97 = %a10[%i10]
+call putint(%97)
+call putch(#10)
+%i10 = %i10 + #1
+goto .L9
+
+label .L10
+%48 = #0
+
+return %48
+

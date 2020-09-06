@@ -1,0 +1,81 @@
+int_non_init @n
+function bubblesort(%arr1[]):
+
+
+
+%i2 = alloca(%i2) #4
+%j2 = alloca(%j2) #4
+%i2 = #0
+
+label .L4
+%5 = @n - #1
+if %i2 >= %5 goto .L5
+
+%j2 = #0
+
+label .L1
+%7 = @n - %i2
+%9 = %7 - #1
+if %j2 >= %9 goto .L3
+
+%10 = %arr1[%j2]
+%15 = %j2 + #1
+%13 = %arr1[%15]
+if %10 <= %13 goto .L2
+
+%tmp5 = alloca(%tmp5) #4
+%20 = %15
+%18 = %arr1[%20]
+%27 = %10
+%arr1[%20] = %27
+%arr1[%j2] = %18
+
+label .L2
+%j2 = %15
+goto .L1
+
+label .L3
+%i2 = %i2 + #1
+goto .L4
+
+label .L5
+%2 = #0
+
+return %2
+
+function main():
+%a7 = alloca #40
+
+
+
+@n = #10
+%40 = & %a7
+call memset(%40,#0,#40)
+%a7[#0] = #4
+%a7[#1] = #3
+%a7[#2] = #9
+%a7[#3] = #2
+%a7[#4] = #0
+%a7[#5] = #1
+%a7[#6] = #6
+%a7[#7] = #5
+%a7[#8] = #7
+%a7[#9] = #8
+%i7 = alloca(%i7) #4
+%i7 = call bubblesort(%40)
+
+label .L6
+if %i7 >= @n goto .L7
+
+%tmp8 = alloca(%tmp8) #4
+%85 = %a7[%i7]
+call putint(%85)
+call putch(#10)
+%i7 = %i7 + #1
+goto .L6
+
+label .L7
+%38 = #0
+
+return %38
+

@@ -1,0 +1,33 @@
+array_non_init @a = [5]
+function main():
+
+
+
+%6 = call getint()
+@a[#0] = %6
+%10 = call getint()
+@a[#1] = %10
+%14 = call getint()
+@a[#2] = %14
+%18 = call getint()
+@a[#3] = %18
+%22 = call getint()
+@a[#4] = %22
+%cnt2 = alloca(%cnt2) #4
+%cnt2 = #4
+%sum2 = alloca(%sum2) #4
+%sum2 = #0
+
+label .L1
+if %cnt2 <= #1 goto .L2
+
+%26 = @a[%cnt2]
+%sum2 = %sum2 + %26
+%cnt2 = %cnt2 - #1
+goto .L1
+
+label .L2
+%2 = %sum2
+
+return %2
+

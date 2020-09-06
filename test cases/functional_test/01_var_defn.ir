@@ -1,0 +1,10 @@
+int_non_init @a
+function main():
+
+
+
+@a = #10
+%2 = #0
+
+return %2
+

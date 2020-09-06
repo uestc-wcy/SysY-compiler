@@ -1,0 +1,77 @@
+function lengthOfLastWord(%s1[],%n1):
+
+
+
+if %n1 != #0 goto .L2
+
+%2 = #0
+goto .L1
+
+label .L2
+%c3 = alloca(%c3) #4
+%c3 = %n1 - #1
+
+label .L3
+if %c3 <= #-1 goto .L4
+
+%9 = %s1[%c3]
+if %9 != #0 goto .L4
+
+%c3 = %c3 - #1
+goto .L3
+
+label .L4
+if %c3 != #-1 goto .L5
+
+%2 = #0
+goto .L1
+
+label .L5
+%i5 = alloca(%i5) #4
+%i5 = %c3
+
+label .L7
+if %i5 <= #-1 goto .L8
+
+%20 = %s1[%i5]
+if %20 != #0 goto .L6
+
+%24 = %n1 - %i5
+%26 = %24 - #1
+%28 = %n1 - #1
+%29 = %28 - %c3
+%2 = %26 - %29
+goto .L1
+
+label .L6
+%i5 = %i5 - #1
+goto .L7
+
+label .L8
+%2 = %c3 - %i5
+
+label .L1
+return %2
+
+function main():
+%a9 = alloca #40
+
+
+
+%res9 = alloca(%res9) #4
+%36 = & %a9
+call memset(%36,#0,#40)
+%a9[#0] = #-4
+%a9[#1] = #3
+%a9[#2] = #9
+%a9[#3] = #-2
+%a9[#4] = #0
+%a9[#5] = #1
+%a9[#6] = #-6
+%a9[#7] = #5
+%a9[#8] = #7
+%a9[#9] = #8
+%35 = call lengthOfLastWord(%36,#10)
+
+return %35
+

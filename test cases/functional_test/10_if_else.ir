@@ -1,0 +1,18 @@
+int_non_init @a
+function main():
+
+
+
+@a = #10
+if #10 <= #0 goto .L2
+
+%2 = #1
+goto .L1
+
+label .L2
+%2 = #0
+goto .L1
+
+label .L1
+return %2
+

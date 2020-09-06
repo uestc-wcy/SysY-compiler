@@ -1,0 +1,21 @@
+int_non_init @a
+int_non_init @b
+function main():
+
+
+
+@b = #0
+@a = #3
+
+label .L1
+if @a <= #0 goto .L2
+
+@b = @b + @a
+@a = @a - #1
+goto .L1
+
+label .L2
+%2 = @b
+
+return %2
+

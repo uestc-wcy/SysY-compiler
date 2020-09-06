@@ -1,0 +1,18 @@
+int_non_init @n
+function main():
+
+
+
+%i2 = alloca(%i2) #4
+%j2 = alloca(%j2) #4
+%3 = call getint()
+%4 = call getint()
+%temp2 = alloca(%temp2) #4
+call putint(%4)
+call putch(#10)
+call putint(%3)
+call putch(#10)
+%2 = #0
+
+return %2
+

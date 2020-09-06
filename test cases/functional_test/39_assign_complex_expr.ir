@@ -1,0 +1,15 @@
+function main():
+
+
+
+%a2 = alloca(%a2) #4
+%b2 = alloca(%b2) #4
+%c2 = alloca(%c2) #4
+%d2 = alloca(%d2) #4
+%result2 = alloca(%result2) #4
+call putint(#-1)
+call putint(#71)
+%2 = #0
+
+return %2
+

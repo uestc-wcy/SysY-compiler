@@ -1,0 +1,27 @@
+function ifElse():
+
+
+
+%a2 = alloca(%a2) #4
+%a2 = #5
+if #5 != #5 goto .L2
+
+%a2 = #25
+goto .L1
+
+label .L2
+%a2 = %a2 * #2
+
+label .L1
+%2 = %a2
+
+return %2
+
+function main():
+
+
+
+%9 = call ifElse()
+
+return %9
+

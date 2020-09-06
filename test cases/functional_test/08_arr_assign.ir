@@ -1,0 +1,10 @@
+array_non_init @a = [10]
+function main():
+
+
+
+@a[#0] = #1
+%2 = #0
+
+return %2
+

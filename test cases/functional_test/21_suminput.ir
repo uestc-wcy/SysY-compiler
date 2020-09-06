@@ -1,0 +1,36 @@
+int_non_init @n
+array_non_init @a = [10]
+function main():
+
+
+
+@n = call getint()
+if @n <= #10 goto .L2
+
+%2 = #1
+goto .L1
+
+label .L2
+%s3 = alloca(%s3) #4
+%i3 = alloca(%i3) #4
+%i3 = #0
+%s3 = #0
+
+label .L3
+if %i3 >= @n goto .L4
+
+%9 = call getint()
+@a[%i3] = %9
+%s3 = %s3 + %9
+%i3 = %i3 + #1
+goto .L3
+
+label .L4
+call putint(%s3)
+%newline4 = alloca(%newline4) #4
+call putch(#10)
+%2 = %s3
+
+label .L1
+return %2
+

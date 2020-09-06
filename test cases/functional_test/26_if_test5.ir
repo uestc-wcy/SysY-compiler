@@ -1,0 +1,33 @@
+function if_if_Else():
+
+
+
+%a2 = alloca(%a2) #4
+%a2 = #5
+%b2 = alloca(%b2) #4
+%b2 = #10
+if #5 != #5 goto .L3
+
+if %b2 != #10 goto .L2
+
+%a2 = #25
+
+label .L2
+goto .L1
+
+label .L3
+%a2 = %a2 + #15
+
+label .L1
+%2 = %a2
+
+return %2
+
+function main():
+
+
+
+%11 = call if_if_Else()
+
+return %11
+

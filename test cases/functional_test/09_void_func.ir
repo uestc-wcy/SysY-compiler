@@ -1,0 +1,22 @@
+int_non_init @a
+int_non_init @b
+int_non_init @c
+function add(%a1,%b1):
+
+
+
+@c = %a1 + %b1
+
+return 
+
+function main():
+
+
+
+@a = #3
+@b = #2
+call add(#3,#2)
+%4 = @c
+
+return %4
+
