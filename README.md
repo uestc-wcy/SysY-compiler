@@ -7,10 +7,10 @@
 ### 中间代码生成
 通过对语法树进行遍历，编译器会生成相应的中间代码，以便后续的优化和生成汇编代码。  
 中间代码格式为自定义，下面包含了一些示例：  
-label label1 :·         ·定义标签 label1  
+label label1 :          定义标签 label1  
 function int|void f(a,b[],c...){body}·  ·函数定义
-x = alloca n·           ·在堆栈分配n字节内存，赋给x。（注1）  
-x = y ·                 ·赋值操作，将变量 y 赋值给 x  
+x = alloca n            在堆栈分配n字节内存，赋给x。 
+x = y                    赋值操作，将变量 y 赋值给 x  
 x = y[z]·               ·将数组y的第z个值赋给x  
 y[z] = x·               ·将x赋给数组y的第z个位置上  
 x = y [op] z·           ·将变量 y 和 z 进行 op 运算的结果传递给 x  
