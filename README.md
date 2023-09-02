@@ -7,6 +7,7 @@
 ### 中间代码生成
 通过对语法树进行遍历，编译器会生成相应的中间代码，以便后续的优化和生成汇编代码。  
 中间代码格式为自定义，下面包含了一些示例：  
+&nbsp;&nbsp;&nbsp;
 label label1 :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;定义标签 label1  
 function int|void f(a,b[],c...){body}&nbsp;&nbsp;&nbsp;&nbsp;函数定义  
 x = alloca n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在堆栈分配n字节内存，赋给x。   
@@ -20,6 +21,7 @@ if x [relop] y goto z&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果 x 与 y �
 x = call f(a,b[],c...)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;调用函数 f，并将其返回值赋给 x  
 call f(a,b[],c...)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;调用函数 f  
 return x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;退出当前函数并返回 x 值    
+&nbsp;&nbsp;&nbsp;
 更详细的中间代码介绍可以查看ir.txt   
 ### 中间代码优化
 编译器提供了一系列的优化算法，包括常量折叠、公共子表达式消除、冗余代码消除、活跃变量分析等，可以对生成的中间代码进行优化，以提高程序的运行效率。
